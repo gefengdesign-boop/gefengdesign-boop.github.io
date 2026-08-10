@@ -1753,7 +1753,7 @@ function initPwa() {
     document.getElementById("installApp").classList.add("hidden");
   });
   if ((location.protocol === "https:" || location.hostname === "localhost") && "serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js").catch(() => {});
+    navigator.serviceWorker.register("./sw.js?v=20260810-homepage").catch(() => {});
   }
 }
 
