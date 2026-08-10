@@ -1214,17 +1214,17 @@ function renderDetail(id) {
     ${detailSection("为什么进入候选", `<p>${escapeHtml(school.fitSummary)}</p>`)}
     ${detailSection("六维适配评分", renderFitRadar([school]))}
     ${detailSection("学校性质与课程", `<p><strong>办学性质：</strong>${escapeHtml(school.schoolNature || "待官方核验")}</p><div class="tag-row">${school.curriculum.map(item => `<span class="tag">${escapeHtml(item)}</span>`).join("")}</div><p>目标年级：${escapeHtml(school.targetGradeName)}。是否对应 MYP1 以学校实际年级映射为准。</p>`)}
-    ${detailSection("📚 课程解读", renderCurriculumDetail(school))}
-    ${detailSection("📅 课程表", renderCourseSchedule(school))}
-    ${detailSection("📅 访校日信息", renderVisitDays(school))}
-    ${detailSection("🏫 校园设施", renderVisuals(school))}
-    ${detailSection("💰 学费与其他费用", renderFeeDetail(school))}
     ${detailSection("英语支持", `<p>${escapeHtml(school.englishSupport)}</p>`)}
     ${detailSection("入学方式", `<ul>${school.admissions.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`)}
     ${detailSection("☎️ 联系招生办", renderAdmissionsContacts(school))}
     ${detailSection("身份判断", `<p>${escapeHtml(school.eligibility)}</p>`)}
     ${detailSection("主要风险", `<ul>${school.primaryRisks.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`)}
+    ${detailSection("📚 课程解读", renderCurriculumDetail(school))}
+    ${detailSection("📅 课程表", renderCourseSchedule(school))}
+    ${detailSection("💰 学费与其他费用", renderFeeDetail(school))}
     ${detailSection("🚗 通勤与租住", renderCommuteSection(school))}
+    ${detailSection("📅 访校日信息", renderVisitDays(school))}
+    ${detailSection("🏫 校园设施", renderVisuals(school))}
     ${detailSection("📚 信息来源", `<ul class="source-list">${sources || "<li>暂无可靠来源</li>"}</ul><p style="margin-top:8px;color:var(--muted);font-size:10px">最近核验：${escapeHtml(checkedDate(school))}</p>`)}
     ${detailSection("📝 家庭笔记", `<div class="member-note"><span class="member-avatar">${escapeHtml(currentMemberLabel().slice(0, 1))}</span><span>将以<strong>${escapeHtml(currentMemberLabel())}</strong>身份记录</span></div><div class="note-controls" style="grid-template-columns:1fr"><textarea id="noteContent" placeholder="记录访校感受、待确认问题或家庭判断"></textarea><button class="btn btn-primary" data-save-note="${school.id}">保存笔记</button></div><div class="note-list">${notesHtml}</div>`)}
   `;
