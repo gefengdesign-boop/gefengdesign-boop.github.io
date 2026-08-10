@@ -23,7 +23,7 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit}button{color:inherit}a{color:inherit}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .appbar{position:sticky;top:0;z-index:50;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:rgba(244,245,242,.94);border-bottom:1px solid rgba(220,226,221,.9);backdrop-filter:blur(18px)}
-.brand{display:flex;align-items:center;gap:10px;font-weight:790}.brand-mark{display:grid;place-items:center;width:31px;height:31px;border-radius:10px;background:var(--accent);color:#fff;font-weight:850;box-shadow:0 5px 12px rgba(18,100,72,.18)}.appbar-meta{display:flex;align-items:center;gap:8px}.private{padding:5px 9px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:11px}.data-status{display:none;padding:5px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:720}
+.brand{display:flex;align-items:center;gap:10px;font-weight:790}.brand-mark{display:grid;place-items:center;width:31px;height:31px;border-radius:10px;background:var(--accent);color:#fff;font-weight:850;box-shadow:0 5px 12px rgba(18,100,72,.18)}.appbar-meta{display:flex;align-items:center;gap:8px}.private{padding:5px 9px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:11px}.data-status{display:none;padding:5px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:720}.access-gate{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:20px;background:linear-gradient(145deg,#eff6f1,#dfece5)}.access-gate.hidden{display:none}.access-gate-card{width:min(420px,100%);padding:28px 24px;border:1px solid rgba(255,255,255,.8);border-radius:24px;background:rgba(255,255,255,.94);box-shadow:0 20px 60px rgba(18,55,39,.16)}.access-gate-logo{display:block;width:58px;height:58px;margin:0 auto 14px;object-fit:contain}.access-gate h1{margin:0;text-align:center;font-size:24px;line-height:1.25}.access-gate p{margin:8px 0 20px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}.access-gate form{display:grid;gap:10px}.access-gate input{width:100%;height:46px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:#fff;text-align:center;letter-spacing:.18em;outline:none}.access-gate input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}.access-gate button{min-height:44px;border:0;border-radius:12px;background:var(--accent);color:#fff;font-weight:760}.access-gate-error{min-height:20px;margin:0!important;color:var(--danger)!important;font-size:12px!important}
 main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--safe-bottom))}.view{display:none}.view.active{display:block}.section{margin-top:24px}.section:first-child{margin-top:0}
 .hero{display:grid;gap:12px}.hero-main{padding:24px 20px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(150deg,#fff 10%,#edf5f0 100%);box-shadow:var(--shadow)}.eyebrow{margin:0 0 8px;color:var(--accent);font-size:12px;font-weight:780;letter-spacing:.02em}.hero h1{margin:0;font-size:clamp(29px,8vw,48px);line-height:1.13;letter-spacing:-.04em}.hero p{margin:13px 0 0;color:var(--muted);font-size:14px;line-height:1.72}.profile-panel{padding:18px;border:1px solid var(--line);border-radius:21px;background:#fff}.profile-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.profile-name{font-size:18px;font-weight:780}.profile-path{color:var(--muted);font-size:12px}.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.profile-item{padding:11px;border-radius:13px;background:var(--surface-2)}.profile-item span{display:block;color:var(--muted);font-size:11px}.profile-item strong{display:block;margin-top:4px;font-size:13px;line-height:1.42}
 .dashboard-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.dash-stat{padding:14px;border:1px solid var(--line);border-radius:16px;background:#fff}.dash-stat strong{display:block;font-size:24px;line-height:1.05}.dash-stat span{display:block;margin-top:6px;color:var(--muted);font-size:11px}.dash-stat[data-tone="warning"] strong{color:var(--warning)}.dash-stat[data-tone="danger"] strong{color:var(--danger)}
@@ -68,10 +68,23 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
 .fit-radar-card{display:grid;gap:10px;padding:12px;border-radius:15px;background:var(--surface-2)}.fit-radar{display:block;width:100%;height:auto;overflow:visible}.fit-radar-grid{fill:none;stroke:#cbd7d0;stroke-width:1}.fit-radar-axis{stroke:#d8e1db;stroke-width:1}.fit-radar-label{fill:var(--text-2);font-size:8.5px;font-weight:700}.fit-radar-polygon{fill-opacity:.16;stroke-width:1.25;stroke-linejoin:round}.fit-radar-point{stroke:#fff;stroke-width:1.25}.fit-radar-legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:0;padding:0;list-style:none}.fit-radar-legend li{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:11px}.fit-radar-swatch{width:9px;height:9px;border-radius:50%}.fit-radar-scores{display:grid;grid-template-columns:1fr 1fr;gap:6px}.fit-radar-score{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 9px;border-radius:10px;background:#fff;font-size:11px}.fit-radar-score span{color:var(--muted)}.fit-radar-score strong{font-size:14px}.fit-radar-note{margin:0!important;color:var(--muted)!important;font-size:11px!important;line-height:1.55!important}.compare-radar-wrap{display:none;margin-bottom:12px;padding:14px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow-soft)}.compare-radar-wrap h3{margin:0 0 4px;font-size:16px}.compare-radar-wrap>p{margin:0 0 10px;color:var(--muted);font-size:11px}.compare-radar-wrap .fit-radar-card{background:var(--surface-2)}
 </style>
 </head>
-<body>
+<body class="access-locked">
+<div id="accessGate" class="access-gate" role="dialog" aria-modal="true" aria-labelledby="accessGateTitle">
+  <div class="access-gate-card">
+    <img class="access-gate-logo" src="assets/brand-logo.png" alt="国际学校择校工具">
+    <h1 id="accessGateTitle">国际学校择校工具</h1>
+    <p>这是家庭私有的择校工作台<br>请输入访问密码后继续</p>
+    <form id="accessGateForm">
+      <label class="sr-only" for="accessPassword">访问密码</label>
+      <input id="accessPassword" type="password" inputmode="numeric" autocomplete="current-password" placeholder="请输入访问密码" required>
+      <button type="submit">进入网站</button>
+      <p id="accessGateError" class="access-gate-error" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
 <header class="appbar">
   <div class="brand"><img class="brand-logo" src="assets/brand-logo.png" alt="国际学校择校工具 Logo"><span class="brand-lockup"><strong>国际学校择校工具</strong><small>北京家庭择校工作台</small></span></div>
-  <div class="appbar-meta"><span id="syncPill" class="sync-pill">本地模式</span><select id="currentMember" class="member-switch" aria-label="当前家庭成员"><option value="father">爸爸</option><option value="mother">妈妈</option><option value="student">孩子</option></select><span class="private">家庭私有</span></div>
+  <div class="appbar-meta"><span id="syncPill" class="sync-pill">本地模式</span><span class="private">家庭私有</span></div>
 </header>
 <nav class="bottom-nav" aria-label="主要导航">
   <button class="nav-btn active" data-view="dashboard"><span class="nav-icon emoji">🏠</span><span>首页</span></button>
@@ -868,7 +881,8 @@ const defaultCommuteSamples = {
 };
 const tierLabels = { primary: "主候选", comparison: "对照", boundary: "边界" };
 const budgetLabels = { low: "预算理想", medium: "预算关注", high: "高预算风险", unknown: "费用待确认" };
-const roleLabels = { father: "爸爸", mother: "妈妈", student: "孩子" };
+const roleLabels = { father: "爸爸", mother: "妈妈", student: "孩子", family: "家庭记录" };
+const ACCESS_PASSWORD_HASH = "ed053874ca199cc53e11c9f4aeaeccd07da652d1c19e3cbdbad5fd9fadba2532";
 const storageKeys = {
   state: "gege.workspaceState.v04",
   cloudConfig: "gege.cloudConfig.v04",
@@ -917,10 +931,10 @@ function createDefaultState() {
     applicationTasks: {},
     reviewDecisions: {},
     commuteSamples: structuredClone(defaultCommuteSamples),
-    currentMemberRole: "father",
+    currentMemberRole: "family",
     revision: 0,
     updatedAt: new Date().toISOString(),
-    updatedBy: "father"
+    updatedBy: "family"
   };
 }
 
@@ -942,7 +956,7 @@ function normalizeState(raw) {
     applicationTasks: state.applicationTasks && typeof state.applicationTasks === "object" ? state.applicationTasks : {},
     reviewDecisions: state.reviewDecisions && typeof state.reviewDecisions === "object" ? state.reviewDecisions : {},
     commuteSamples,
-    currentMemberRole: roleLabels[state.currentMemberRole] ? state.currentMemberRole : "father",
+    currentMemberRole: "family",
     revision: Number.isFinite(Number(state.revision)) ? Number(state.revision) : 0
   };
 }
@@ -963,7 +977,7 @@ function loadWorkspaceState() {
 
 function persistState(reason = "本机修改") {
   workspaceState.updatedAt = new Date().toISOString();
-  workspaceState.updatedBy = workspaceState.currentMemberRole;
+  workspaceState.updatedBy = "family";
   saveJson(storageKeys.state, workspaceState);
   syncMeta.localDirty = true;
   saveJson(storageKeys.syncMeta, syncMeta);
@@ -980,6 +994,30 @@ function checkedDate(school) { return school.sources?.map(source => source.check
 function budgetClass(risk) { return `budget-${risk || "unknown"}`; }
 function getSchool(id) { return schools.find(school => school.id === id); }
 function currentMemberLabel() { return roleLabels[workspaceState.currentMemberRole] || "家庭成员"; }
+function closeAccessGate() {
+  document.body.classList.remove("access-locked");
+  document.getElementById("accessGate").classList.add("hidden");
+}
+async function hashAccessPassword(value) {
+  const bytes = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, "0")).join("");
+}
+function initAccessGate() {
+  if (localStorage.getItem("gege.accessGranted.v1") === "1") { closeAccessGate(); return; }
+  const form = document.getElementById("accessGateForm");
+  const input = document.getElementById("accessPassword");
+  const error = document.getElementById("accessGateError");
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+    const valid = await hashAccessPassword(input.value.trim()) === ACCESS_PASSWORD_HASH;
+    if (!valid) { error.textContent = "密码不正确，请重试"; input.select(); return; }
+    localStorage.setItem("gege.accessGranted.v1", "1");
+    error.textContent = "";
+    closeAccessGate();
+  });
+  input.focus();
+}
 function showToast(message) {
   const toast = document.getElementById("toast");
   toast.textContent = message;
@@ -1212,7 +1250,7 @@ function renderDetail(id) {
   document.getElementById("sheetSchoolMeta").textContent = `${school.nameEn} · ${school.district} · ${school.targetGradeName}`;
   const sources = (school.sources || []).map(source => `<li><a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.label)}</a><span>${escapeHtml(source.checkedAt || "待确认")}</span></li>`).join("");
   const notes = (workspaceState.familyNotes[id] || []).slice().reverse();
-  const notesHtml = notes.length ? notes.map(note => `<div class="note-item"><div class="note-item-head"><strong>${escapeHtml(roleLabels[note.role] || note.role)}</strong><time>${escapeHtml(note.createdAt)}</time></div><p>${escapeHtml(note.content)}</p></div>`).join("") : `<div class="note-empty">还没有家庭笔记。</div>`;
+  const notesHtml = notes.length ? notes.map(note => `<div class="note-item"><div class="note-item-head"><strong>${escapeHtml(note.role === "family" ? "家庭记录" : (roleLabels[note.role] || note.role))}</strong><time>${escapeHtml(note.createdAt)}</time></div><p>${escapeHtml(note.content)}</p></div>`).join("") : `<div class="note-empty">还没有家庭笔记。</div>`;
   const selected = workspaceState.selectedSchoolIds.includes(id);
   document.getElementById("sheetBody").innerHTML = `
     <div class="sheet-actions"><button class="btn ${selected ? "btn-soft" : "btn-primary"}" data-sheet-compare="${school.id}">${selected ? "移出对比" : "加入对比"}</button><a class="btn" style="display:grid;place-items:center;text-decoration:none" href="${escapeHtml(school.officialUrl)}" target="_blank" rel="noreferrer">打开官网</a></div>
@@ -1233,7 +1271,7 @@ function renderDetail(id) {
     ${detailSection("📅 访校日信息", renderVisitDays(school))}
     ${detailSection("🏫 校园设施", renderVisuals(school))}
     ${detailSection("📚 信息来源", `<ul class="source-list">${sources || "<li>暂无可靠来源</li>"}</ul><p style="margin-top:8px;color:var(--muted);font-size:10px">最近核验：${escapeHtml(checkedDate(school))}</p>`)}
-    ${detailSection("📝 家庭笔记", `<div class="member-note"><span class="member-avatar">${escapeHtml(currentMemberLabel().slice(0, 1))}</span><span>将以<strong>${escapeHtml(currentMemberLabel())}</strong>身份记录</span></div><div class="note-controls" style="grid-template-columns:1fr"><textarea id="noteContent" placeholder="记录访校感受、待确认问题或家庭判断"></textarea><button class="btn btn-primary" data-save-note="${school.id}">保存笔记</button></div><div class="note-list">${notesHtml}</div>`)}
+    ${detailSection("📝 家庭笔记", `<div class="member-note"><span class="member-avatar">家</span><span>所有访问者的笔记会合并到家庭记录</span></div><div class="note-controls" style="grid-template-columns:1fr"><textarea id="noteContent" placeholder="记录访校感受、待确认问题或家庭判断"></textarea><button class="btn btn-primary" data-save-note="${school.id}">保存笔记</button></div><div class="note-list">${notesHtml}</div>`)}
   `;
   document.getElementById("sheetBackdrop").classList.add("open");
   document.querySelectorAll("#detailAnchorNav button").forEach(button => button.classList.toggle("active", button.dataset.detailAnchor === "detail-overview"));
@@ -1256,7 +1294,7 @@ function saveNote(id) {
   const content = document.getElementById("noteContent").value.trim();
   if (!content) { showToast("请先填写笔记内容"); return; }
   workspaceState.familyNotes[id] = workspaceState.familyNotes[id] || [];
-  workspaceState.familyNotes[id].push({ role: workspaceState.currentMemberRole, content, createdAt: new Date().toLocaleString("zh-CN", { hour12: false }) });
+  workspaceState.familyNotes[id].push({ role: "family", content, createdAt: new Date().toLocaleString("zh-CN", { hour12: false }) });
   persistState("家庭笔记已更新");
   showToast("笔记已保存");
   renderDetail(id);
@@ -1731,7 +1769,6 @@ async function copyWorkspaceId() {
 }
 
 function applyStateToUi() {
-  document.getElementById("currentMember").value = workspaceState.currentMemberRole;
   updateSelectionUi();
   renderProgress();
   renderDataStats();
@@ -1784,12 +1821,7 @@ document.addEventListener("visibilitychange", () => {
 });
 
 function init() {
-  document.getElementById("currentMember").value = workspaceState.currentMemberRole;
-  document.getElementById("currentMember").addEventListener("change", event => {
-    workspaceState.currentMemberRole = event.target.value;
-    persistState("当前家庭成员已切换");
-    showToast(`当前身份：${currentMemberLabel()}`);
-  });
+  initAccessGate();
   document.querySelectorAll(".nav-btn").forEach(button => button.addEventListener("click", () => switchView(button.dataset.view)));
   document.querySelectorAll("[data-go]").forEach(button => button.addEventListener("click", () => switchView(button.dataset.go)));
   document.getElementById("goSchoolsBtn").addEventListener("click", () => switchView("schools"));
