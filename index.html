@@ -1170,9 +1170,10 @@ function renderAdmissionsContacts(school) {
 
 function renderVisuals(school) {
   const visuals = school.visuals;
-  if (!visuals?.hero?.url) return `<p class="unknown">校园图片待补充。</p>`;
-  const gallery = (visuals.gallery?.length ? visuals.gallery : [visuals.hero]).map((image, index) => `<button class="visual-card" type="button" data-lightbox-url="${escapeHtml(image.url)}" data-lightbox-alt="${escapeHtml(image.alt || school.nameZh)}" data-lightbox-caption="${escapeHtml(image.caption || image.alt || school.nameZh)}"><img src="${escapeHtml(image.url)}" alt="${escapeHtml(image.alt || school.nameZh)}" onerror="this.onerror=null;this.src='assets/school-scenes/school-fallback.svg'"><span>${escapeHtml(image.caption || "校园设施")}</span></button>`).join("");
-  return `<div class="visual-hero"><img src="${escapeHtml(visuals.hero.url)}" alt="${escapeHtml(visuals.hero.alt || school.nameZh)}" onerror="this.onerror=null;this.src='assets/school-scenes/school-fallback.svg'"></div><div class="visual-grid">${gallery}</div><p class="visual-note">图片用于家庭择校浏览；点击图片可全屏查看。来源：<a href="${escapeHtml(visuals.hero.sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(visuals.hero.sourceLabel || "图片来源")}</a>。</p>`;
+  if (!visuals?.gallery?.length) return `<p class="unknown">校园设施照片待补充。</p>`;
+  const gallery = visuals.gallery.map((image) => `<button class="visual-card" type="button" data-lightbox-url="${escapeHtml(image.url)}" data-lightbox-alt="${escapeHtml(image.alt || school.nameZh)}" data-lightbox-caption="${escapeHtml(image.caption || image.alt || school.nameZh)}"><img src="${escapeHtml(image.url)}" alt="${escapeHtml(image.alt || school.nameZh)}" onerror="this.onerror=null;this.src='assets/school-scenes/school-fallback.svg'"><span>${escapeHtml(image.caption || "校园设施")}</span></button>`).join("");
+  const source = visuals.hero?.sourceUrl ? `来源：<a href="${escapeHtml(visuals.hero.sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(visuals.hero.sourceLabel || "图片来源")}</a>。` : "";
+  return `<div class="visual-grid">${gallery}</div><p class="visual-note">图片用于家庭择校浏览；点击图片可全屏查看。${source}</p>`;
 }
 function renderHeroVisual(school) {
   const image = school.visuals?.hero;
