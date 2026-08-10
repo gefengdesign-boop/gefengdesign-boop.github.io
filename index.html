@@ -1753,10 +1753,14 @@ function initPwa() {
     deferredInstallPrompt = null;
     document.getElementById("installApp").classList.add("hidden");
   });
-  if ((location.protocol === "https:" || location.hostname === "localhost") && "serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js?v=20260810-homepage").catch(() => {});
-  }
+  clearLegacyOfflineCache();
   checkForFreshBuild();
+}
+
+function clearLegacyOfflineCache() {
+  if (!("serviceWorker" in navigator)) return;
+  navigator.serviceWorker.getRegistrations().then(registrations => registrations.forEach(registration => registration.unregister())).catch(() => {});
+  if ("caches" in window) caches.keys().then(keys => keys.forEach(key => caches.delete(key))).catch(() => {});
 }
 
 function checkForFreshBuild() {
