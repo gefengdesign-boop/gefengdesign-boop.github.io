@@ -118,8 +118,6 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
       <div class="dash-stat" data-tone="warning"><strong>34</strong><span>身份待书面确认</span></div>
       <div class="dash-stat" data-tone="danger"><strong id="dashReviewOpen">0</strong><span>待处理核验项</span></div>
     </div>
-    <div class="sync-banner"><div><strong id="syncBannerTitle">当前使用本机数据</strong><span id="syncBannerText">无需联网即可使用；配置云同步后可在三台设备间共享。</span></div><button id="syncBannerAction" class="btn">数据与同步</button></div>
-
     <div class="section dashboard-columns">
       <div class="panel">
     <div class="section-head"><div><h2>优先深挖</h2><p>按六维综合排序分排列，不等于最终录取或推荐排名。</p></div><button class="section-link" data-go="schools">查看全部</button></div>
@@ -1699,24 +1697,16 @@ function renderCloudUi(forceStatus) {
 
 function renderSyncUi(reason) {
   const pill = document.getElementById("syncPill");
-  const title = document.getElementById("syncBannerTitle");
-  const text = document.getElementById("syncBannerText");
   const signedIn = Boolean(cloudSession?.accessToken);
   pill.className = "sync-pill";
   if (syncMeta.localDirty) {
     pill.classList.add("dirty");
     pill.textContent = "本机有更新";
-    title.textContent = reason || "本机数据尚未同步";
-    text.textContent = signedIn ? "进入“数据”后手动推送到家庭云空间。" : "当前仅保存在本设备，可导出备份。";
   } else if (signedIn) {
     pill.classList.add("online");
     pill.textContent = `云端 R${workspaceState.revision || 0}`;
-    title.textContent = "家庭数据已同步";
-    text.textContent = syncMeta.lastSyncedAt ? `最近同步 ${formatDateTime(syncMeta.lastSyncedAt)}` : "尚未完成首次同步";
   } else {
     pill.textContent = "本地模式";
-    title.textContent = "当前使用本机数据";
-    text.textContent = "无需联网即可使用；配置云同步后可在三台设备间共享。";
   }
 }
 
@@ -1883,7 +1873,6 @@ function init() {
   document.getElementById("importBackup").addEventListener("change", event => { const file = event.target.files?.[0]; if (file) importBackupFile(file); event.target.value = ""; });
   document.getElementById("copyWorkspaceId").addEventListener("click", copyWorkspaceId);
   document.getElementById("resetLocal").addEventListener("click", resetLocalData);
-  document.getElementById("syncBannerAction").addEventListener("click", () => switchView("data"));
   document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
   document.getElementById("lightbox").addEventListener("click", event => { if (event.target.id === "lightbox") closeLightbox(); });
   document.addEventListener("keydown", event => { if (event.key === "Escape") { closeLightbox(); closeDetail(); } });
