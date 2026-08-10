@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="国际学校择校工具：为北京家庭整理学校、对比、申请进度与通勤信息">
+<meta name="app-version" content="20260810-3">
 <meta name="theme-color" content="#f5f6f3">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./assets/brand-logo.png?v=brand-20260810" type="image/png">
@@ -1755,6 +1756,22 @@ function initPwa() {
   if ((location.protocol === "https:" || location.hostname === "localhost") && "serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js?v=20260810-homepage").catch(() => {});
   }
+  checkForFreshBuild();
+}
+
+function checkForFreshBuild() {
+  const currentVersion = document.querySelector('meta[name="app-version"]')?.content || "unknown";
+  const checkUrl = `./index.html?version-check=${Date.now()}`;
+  fetch(checkUrl, { cache: "no-store" }).then(response => response.text()).then(html => {
+    const match = html.match(/<meta name="app-version" content="([^"]+)"/);
+    if (match?.[1] && match[1] !== currentVersion) {
+      const reloadKey = `school-planner-reloaded-${match[1]}`;
+      if (!sessionStorage.getItem(reloadKey)) {
+        sessionStorage.setItem(reloadKey, "1");
+        location.reload();
+      }
+    }
+  }).catch(() => {});
 }
 
 function init() {
