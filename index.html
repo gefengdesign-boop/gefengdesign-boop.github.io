@@ -1774,6 +1774,11 @@ function checkForFreshBuild() {
   }).catch(() => {});
 }
 
+setInterval(checkForFreshBuild, 60 * 1000);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") checkForFreshBuild();
+});
+
 function init() {
   document.getElementById("currentMember").value = workspaceState.currentMemberRole;
   document.getElementById("currentMember").addEventListener("change", event => {
