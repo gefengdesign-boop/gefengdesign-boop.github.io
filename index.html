@@ -1204,7 +1204,7 @@ function renderCommunityReviews(school) {
   const items = (review.items || []).filter(item => !item.module || item.module === "网友评价");
   if (!items.length) return "";
   const itemHtml = items.map(item => `<div class="community-review-item"><div class="community-review-item-head"><strong>${escapeHtml(item.module || "未分类信息")}</strong><span>${escapeHtml(item.label || "网友体验")}</span></div><p>${escapeHtml(item.text)}</p></div>`).join("");
-  return `<div class="community-review"><p class="community-review-summary"><strong>筛选范围：</strong>${escapeHtml(review.scope)}。${escapeHtml(review.summary)}</p><div class="community-review-list">${itemHtml}</div><p class="community-review-source">来源：<a href="${escapeHtml(review.sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(review.sourceLabel)}</a> · 作者：${escapeHtml(review.author)} · 发布：${escapeHtml(review.publishedAt)}。内容为单篇网友/作者信息，不替代学校官方资料。</p></div>`;
+  return `<div class="community-review"><div class="community-review-list">${itemHtml}</div><p class="community-review-source">来源：<a href="${escapeHtml(review.sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(review.sourceLabel)}</a> · 作者：${escapeHtml(review.author)} · 发布：${escapeHtml(review.publishedAt)}。内容为单篇网友/作者信息，不替代学校官方资料。</p></div>`;
 }
 
 function renderCommunityModule(school, moduleName) {
