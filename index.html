@@ -863,7 +863,7 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
   <article class="detail-sheet">
     <div class="sheet-handle"></div>
     <header class="sheet-head"><div class="sheet-title"><div class="sheet-school-brand"><div id="sheetSchoolLogo"></div><div><h2 id="sheetSchoolName"></h2><p id="sheetSchoolMeta"></p></div></div></div><button id="closeSheet" class="close-btn" aria-label="关闭详情">×</button></header>
-    <nav id="detailAnchorNav" class="detail-anchor-nav" aria-label="详情模块快速定位"><button type="button" data-detail-anchor="detail-overview" class="active">总览</button><button type="button" data-detail-anchor="detail-fit">评分</button><button type="button" data-detail-anchor="detail-application">申请</button><button type="button" data-detail-anchor="detail-curriculum">课程</button><button type="button" data-detail-anchor="detail-fees">费用</button><button type="button" data-detail-anchor="detail-community">网友评价</button><button type="button" data-detail-anchor="detail-commute">通勤</button><button type="button" data-detail-anchor="detail-visit">访校</button><button type="button" data-detail-anchor="detail-campus">校园</button><button type="button" data-detail-anchor="detail-sources">来源</button><button type="button" data-detail-anchor="detail-notes">笔记</button></nav>
+    <nav id="detailAnchorNav" class="detail-anchor-nav" aria-label="详情模块快速定位"><button type="button" data-detail-anchor="detail-overview" class="active">总览</button><button type="button" data-detail-anchor="detail-fit">评分</button><button type="button" data-detail-anchor="detail-application">申请</button><button type="button" data-detail-anchor="detail-curriculum">课程</button><button type="button" data-detail-anchor="detail-fees">费用</button><button type="button" data-detail-anchor="detail-commute">通勤</button><button type="button" data-detail-anchor="detail-visit">访校</button><button type="button" data-detail-anchor="detail-campus">校园</button><button type="button" data-detail-anchor="detail-sources">来源</button><button type="button" data-detail-anchor="detail-community">网友评价</button><button type="button" data-detail-anchor="detail-notes">笔记</button></nav>
     <div id="sheetBody" class="sheet-body"></div>
   </article>
 </div>
@@ -1301,11 +1301,11 @@ function renderDetail(id) {
     ${detailSection("📚 课程解读", `${renderCurriculumDetail(school)}${renderCommunityModule(school, "课程解读")}`)}
     ${detailSection("📅 课程表", renderCourseSchedule(school))}
     ${detailSection("💰 学费与其他费用", `${renderFeeDetail(school)}${renderCommunityModule(school, "学费与其他费用")}`)}
-    ${communitySection}
     ${detailSection("🚗 通勤与租住", renderCommuteSection(school))}
     ${detailSection("📅 访校日信息", renderVisitDays(school))}
     ${detailSection("🏫 校园设施", renderVisuals(school))}
     ${detailSection("📚 信息来源", `<ul class="source-list">${sources || "<li>暂无可靠来源</li>"}</ul><p style="margin-top:8px;color:var(--muted);font-size:10px">最近核验：${escapeHtml(checkedDate(school))}</p>`)}
+    ${communitySection}
     ${detailSection("📝 家庭笔记", `<div class="member-note"><span class="member-avatar">家</span><span>所有访问者的笔记会合并到家庭记录</span></div><div class="note-controls" style="grid-template-columns:1fr"><textarea id="noteContent" placeholder="记录访校感受、待确认问题或家庭判断"></textarea><button class="btn btn-primary" data-save-note="${school.id}">保存笔记</button></div><div class="note-list">${notesHtml}</div>`)}
   `;
   document.getElementById("sheetBackdrop").classList.add("open");
