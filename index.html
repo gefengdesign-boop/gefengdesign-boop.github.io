@@ -76,6 +76,12 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
 .nav-badge{font-size:11px}
 /* Keep generated detail content readable even where legacy inline styles exist. */
 .detail-sheet [style*="font-size:10px"],.detail-sheet [style*="font-size:9px"],.detail-sheet [style*="font-size:11px"]{font-size:12px!important}
+/* MAP actions are used frequently on phones: give every target a comfortable hit area. */
+#view-map .btn{min-height:46px;padding:0 15px;font-size:14px;display:inline-flex;align-items:center;justify-content:center;line-height:1.35;touch-action:manipulation}
+#view-map .action-card .btn{width:100%;margin-top:12px}
+#view-map .action-card .btn+.btn{margin-left:0}
+#view-map .inline-actions .btn{min-width:150px}
+#view-map .subnav button{min-height:44px;padding:9px 14px;font-size:13px}
 </style>
 </head>
 <body class="access-locked">
