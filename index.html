@@ -759,7 +759,7 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
     <div class="status-row"><span class="budget budget-unknown">费用待确认</span><span class="risk-text">可能不招G6</span></div>
     <div class="card-actions"><button class="btn" data-action="compare">加入对比</button><button class="btn btn-primary" data-action="detail">查看详情</button></div>
   </article>
-<article class="school-card" data-school-id="ju-oca北京" data-tier="boundary">
+<article class="school-card" data-school-id="ju-oca-beijing" data-tier="boundary">
     <div class="card-head"><button class="school-card-title school-title-button" type="button" data-action="detail" aria-label="打开北京橘郡国际学校（北京校区）详情"><span class="school-logo school-logo-ju-oca北京"><img src="assets/school-logos/school-fallback.svg" alt="北京橘郡国际学校（北京校区） logo" loading="lazy"></span><div><div class="school-kicker"><span>38</span><span>·</span><span>朝阳区</span></div><h3>北京橘郡国际学校（北京校区）</h3><p class="school-en">OCAHS Beijing Campus · 橘郡 OCAHS</p></div></button><span class="tier tier-boundary">边界</span></div>
     <p class="fit-summary">美式高中/AP与港新DSE双轨项目，当前公开招生信息主要面向初高中阶段；G6适配性待学校确认。</p>
     <div class="tag-row"><span class="tag">美式高中</span><span class="tag">AP</span><span class="tag">DSE</span></div>
@@ -1102,7 +1102,7 @@ function renderSchoolLogo(school, extraClass = "") { return school.logo ? `<span
 function formatWan(value) { return Number.isFinite(value) ? `${(value / 10000).toFixed(1)} 万` : "待确认"; }
 function checkedDate(school) { return school.sources?.map(source => source.checkedAt).filter(Boolean).sort().at(-1) || "待确认"; }
 function budgetClass(risk) { return `budget-${risk || "unknown"}`; }
-function getSchool(id) { return schools.find(school => school.id === id); }
+function getSchool(id) { return schools.find(school => school.id === id) || (id === "ju-oca-beijing" ? schools.find(school => school.id === "ju-oca北京") : undefined); }
 function currentMemberLabel() { return roleLabels[workspaceState.currentMemberRole] || "家庭成员"; }
 function closeAccessGate() {
   document.body.classList.remove("access-locked");
