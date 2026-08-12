@@ -78,6 +78,12 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
 .detail-sheet [style*="font-size:10px"],.detail-sheet [style*="font-size:9px"],.detail-sheet [style*="font-size:11px"]{font-size:12px!important}
 /* Keep the home-page mission statement prominent without overpowering the dashboard. */
 .hero h1{font-size:clamp(23px,5.5vw,34px)}
+/* Align the three action rows and the bottom notice to one shared content edge. */
+.action-list{width:100%}
+.action-item{grid-template-columns:60px minmax(0,1fr);align-items:center;gap:20px}
+.action-item>.action-icon{display:grid;place-items:center;width:60px;height:60px;margin:0;padding:0;border-radius:20px;font-size:20px;line-height:1;color:var(--muted);font-weight:800}
+.action-item>div{min-width:0}
+.notice{width:100%;margin-left:0;margin-right:0}
 /* MAP actions are used frequently on phones: give every target a comfortable hit area. */
 #view-map .btn{min-height:46px;padding:0 15px;font-size:14px;display:inline-flex;align-items:center;justify-content:center;line-height:1.35;touch-action:manipulation}
 #view-map .action-card .btn{width:100%;margin-top:12px}
