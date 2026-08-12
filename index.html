@@ -753,6 +753,8 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
     <div class="progress-summary"><div class="progress-card"><strong>待测</strong><span>最近一次基线</span></div><div class="progress-card"><strong>3项</strong><span>Reading · Language · Math</span></div><div class="progress-card"><strong>G5</strong><span>当前年级</span></div><div class="progress-card"><strong>G6</strong><span>目标年级</span></div></div>
     <div class="section panel"><div class="section-head"><div><h2>MAP 准备路径</h2><p>把分数变成行动，不只追求一个总分。</p></div></div><div class="timeline"><div class="timeline-item current"><span class="timeline-date">现在 · 2026年8–9月</span><h3>完成一次正式摸底</h3><p>记录 Reading、Language Usage、Math 三项结果，并保存诊断报告。</p><ul class="timeline-tasks"><li>确认测试机构与测试版本</li><li>单独做英文阅读、写作和英文数学诊断</li><li>建立弱项清单</li></ul></div><div class="timeline-item"><span class="timeline-date">2026年10–12月</span><h3>决定是否进入培训</h3><p>比较课程是否真正包含 MAP 题型、英文数学、模考和错题分析。</p><ul class="timeline-tasks"><li>试听至少两种方案</li><li>记录孩子接受度与每周负担</li><li>避免只承诺“提分”的课程</li></ul></div><div class="timeline-item"><span class="timeline-date">2027年1–3月</span><h3>申请前复测</h3><p>根据目标学校要求安排复测；同时确认学校是否接受或要求标准化测试成绩。</p></div><div class="timeline-item"><span class="timeline-date">2027年4月以后</span><h3>转向校内测试与面试</h3><p>MAP 只是准备工具，最终仍要结合成绩单、英语测试、数学测试、写作和面谈。</p></div></div><div class="metric-note">建议在这里维护每次测试的日期、三项分数、百分位、成长值、薄弱知识点和下一步动作。学校要求以招生办当年回复为准。</div></div>
     <div class="section panel"><div class="section-head"><div><h2>MAP 课程选择标准</h2><p>先评价课程，再决定是否购买。</p></div></div><div class="action-card-grid"><div class="action-card"><strong>必须问清</strong><p>是否针对 MAP？是否有正式模考？是否提供错题报告？是否覆盖英文数学术语？</p></div><div class="action-card"><strong>不要只看</strong><p>机构名气、宣传分数、一次试听表现，或“保证达到某分数”的承诺。</p></div><div class="action-card"><strong>家庭约束</strong><p>每周课时、作业量、孩子压力、与校内学习是否冲突，都要纳入决策。</p></div></div></div>
+    <div class="section panel"><div class="section-head"><div><h2>蓝思值（Lexile）测试</h2><p>蓝思值主要描述英文文本复杂度匹配，不等同于学校录取分数；建议先用免费渠道完成基线。</p></div></div><div class="action-card-grid"><div class="action-card"><strong>首都图书馆 · 新东方双语阅读</strong><p>持北京市公共图书馆网络联合读者卡，可通过首都图书馆知识库进入“新东方双语阅读”，使用其中的蓝思测评。</p><a class="btn btn-soft" href="https://www.clcn.net.cn/resources/default/detail?id=378" target="_blank" rel="noreferrer">打开官方说明</a></div><div class="action-card"><strong>Lexile 官方 · Find a Book</strong><p>输入蓝思值、年级、兴趣和关键词查找英文书。官方建议可先从测试值约 100L 以下到 50L 以上的范围开始，再按阅读体验调整。</p><a class="btn btn-soft" href="https://hub.lexile.com/find-a-book/" target="_blank" rel="noreferrer">查找英文书</a></div><div class="action-card"><strong>操作提醒</strong><p>让孩子在状态好的时候独立完成；记录测试日期、渠道和结果，不要把不同渠道的结果直接当成同一标准。</p><a class="btn btn-soft" href="https://kids.clcn.net.cn/faq/default/index?is_solve=1&page=2" target="_blank" rel="noreferrer">查看图书馆 FAQ</a></div></div><div class="metric-note">注意：蓝思值衡量文本难度和读者阅读能力的匹配，不直接判断内容是否适龄；选书时还要单独考虑主题、情绪和发展阶段。</div></div>
+    <div class="section panel"><div class="section-head"><div><h2>记录一次蓝思测试</h2><p>结果只保存在当前设备，后续可在数据入口备份。</p></div></div><div class="form-grid two"><div class="field"><label for="lexileDate">测试日期</label><input id="lexileDate" type="date"></div><div class="field"><label for="lexileScore">蓝思值（L）</label><input id="lexileScore" type="number" min="0" max="2000" step="5" placeholder="例如 750"></div><div class="field"><label for="lexileSource">测试渠道</label><select id="lexileSource"><option>首都图书馆·新东方双语阅读</option><option>学校或培训机构</option><option>其他测评</option></select></div><div class="field"><label for="lexileNote">备注</label><input id="lexileNote" placeholder="独立完成 / 需要帮助 / 结果说明"></div></div><div class="inline-actions"><button id="saveLexile" class="btn btn-primary">保存蓝思结果</button><span id="lexileSaved" class="compare-status"></span></div><div id="lexileHistory" class="sample-list" style="margin-top:10px"></div></div>
   </section>
 
   <section id="view-application" class="view">
@@ -1001,6 +1003,7 @@ function createDefaultState() {
     selectedSchoolIds: defaultSelected.slice(),
     familyNotes: {},
     applicationTasks: {},
+    lexileTests: [],
     reviewDecisions: {},
     commuteSamples: structuredClone(defaultCommuteSamples),
     currentMemberRole: "family",
@@ -1026,6 +1029,7 @@ function normalizeState(raw) {
     selectedSchoolIds: Array.isArray(state.selectedSchoolIds) ? state.selectedSchoolIds.filter(id => schools.some(s => s.id === id)).slice(0, 4) : fallback.selectedSchoolIds,
     familyNotes: state.familyNotes && typeof state.familyNotes === "object" ? state.familyNotes : {},
     applicationTasks: state.applicationTasks && typeof state.applicationTasks === "object" ? state.applicationTasks : {},
+    lexileTests: Array.isArray(state.lexileTests) ? state.lexileTests : fallback.lexileTests,
     reviewDecisions: state.reviewDecisions && typeof state.reviewDecisions === "object" ? state.reviewDecisions : {},
     commuteSamples,
     currentMemberRole: "family",
@@ -1105,6 +1109,22 @@ function showToast(message) {
   clearTimeout(showToast.timer);
   showToast.timer = setTimeout(() => toast.classList.remove("show"), 2200);
 }
+function renderLexileHistory() {
+  const history = Array.isArray(workspaceState.lexileTests) ? workspaceState.lexileTests.slice().reverse() : [];
+  const target = document.getElementById("lexileHistory");
+  if (!target) return;
+  target.innerHTML = history.length ? history.map(item => `<div class="sample-item"><span>${escapeHtml(item.date || "未填日期")} · ${escapeHtml(item.source || "其他渠道")} · ${escapeHtml(item.note || "")}</span><strong>${escapeHtml(item.score)}L</strong></div>`).join("") : `<div class="unknown">还没有蓝思测试记录。</div>`;
+}
+function saveLexileTest() {
+  const score = Number(document.getElementById("lexileScore")?.value);
+  if (!Number.isFinite(score) || score < 0 || score > 2000) { showToast("请填写有效的蓝思值"); return; }
+  workspaceState.lexileTests = Array.isArray(workspaceState.lexileTests) ? workspaceState.lexileTests : [];
+  workspaceState.lexileTests.push({ date: document.getElementById("lexileDate")?.value || new Date().toISOString().slice(0, 10), score: Math.round(score), source: document.getElementById("lexileSource")?.value || "其他渠道", note: document.getElementById("lexileNote")?.value.trim() || "" });
+  persistState("蓝思测试结果已更新");
+  document.getElementById("lexileSaved").textContent = "已保存";
+  renderLexileHistory();
+  showToast("蓝思测试结果已保存");
+}
 function formatDateTime(value) {
   if (!value) return "待确认";
   const date = new Date(value);
@@ -1159,6 +1179,7 @@ function switchView(view) {
   if (view === "compare") renderCompare();
   if (view === "progress") renderProgress();
   if (view === "data") renderDataCenter();
+  if (view === "map") renderLexileHistory();
 }
 
 function switchSchoolSubview(view) {
@@ -1940,6 +1961,7 @@ function init() {
   document.querySelectorAll("[data-go]").forEach(button => button.addEventListener("click", event => { event.preventDefault(); switchView(button.dataset.go); if (button.dataset.go === "schools") switchSchoolSubview("library"); }));
   document.querySelectorAll("[data-school-subview]").forEach(button => button.addEventListener("click", () => switchSchoolSubview(button.dataset.schoolSubview)));
   document.getElementById("goSchoolsBtn").addEventListener("click", () => switchView("schools"));
+  document.getElementById("saveLexile")?.addEventListener("click", saveLexileTest);
   document.querySelector(".priority-list").addEventListener("click", event => {
     const button = event.target.closest("[data-priority-detail]");
     if (button) renderDetail(button.dataset.priorityDetail);
