@@ -760,12 +760,12 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
     <div class="card-actions"><button class="btn" data-action="compare">加入对比</button><button class="btn btn-primary" data-action="detail">查看详情</button></div>
   </article>
 <article class="school-card" data-school-id="ju-oca-beijing" data-tier="boundary">
-    <div class="card-head"><button class="school-card-title school-title-button" type="button" data-action="detail" aria-label="打开北京橘郡国际学校（北京校区）详情"><span class="school-logo school-logo-ju-oca北京"><img src="assets/school-logos/school-fallback.svg" alt="北京橘郡国际学校（北京校区） logo" loading="lazy"></span><div><div class="school-kicker"><span>38</span><span>·</span><span>朝阳区</span></div><h3>北京橘郡国际学校（北京校区）</h3><p class="school-en">OCAHS Beijing Campus · 橘郡 OCAHS</p></div></button><span class="tier tier-boundary">边界</span></div>
+    <div class="card-head"><button class="school-card-title school-title-button" type="button" data-action="detail" data-school-id="ju-oca-beijing" aria-label="打开北京橘郡国际学校（北京校区）详情"><span class="school-logo school-logo-ju-oca-beijing"><img src="assets/school-logos/school-fallback.svg" alt="北京橘郡国际学校（北京校区） logo" loading="lazy"></span><div><div class="school-kicker"><span>38</span><span>·</span><span>朝阳区</span></div><h3>北京橘郡国际学校（北京校区）</h3><p class="school-en">OCAHS Beijing Campus · 橘郡 OCAHS</p></div></button><span class="tier tier-boundary">边界</span></div>
     <p class="fit-summary">美式高中/AP与港新DSE双轨项目，当前公开招生信息主要面向初高中阶段；G6适配性待学校确认。</p>
     <div class="tag-row"><span class="tag">美式高中</span><span class="tag">AP</span><span class="tag">DSE</span></div>
     <div class="metric-grid"><div class="metric"><span>综合排序分</span><strong>43</strong><small>六维加权 /100</small></div><div class="metric"><span>证据完整度</span><strong>58%</strong><small>官方与公开资料</small></div><div class="metric"><span>公开AP学费</span><strong>14.8万</strong><small>高中课程参考</small></div><div class="metric"><span>G6适配</span><strong>待确认</strong><small>主要招生初三以上</small></div></div>
     <div class="status-row"><span class="budget budget-medium">预算关注</span><span class="risk-text">当前不作为G6主候选</span></div>
-    <div class="card-actions"><button class="btn" data-action="compare">加入对比</button><button class="btn btn-primary" data-action="detail">查看详情</button></div>
+    <div class="card-actions"><button class="btn" data-action="compare" data-school-id="ju-oca-beijing">加入对比</button><button class="btn btn-primary" data-action="detail" data-school-id="ju-oca-beijing">查看详情</button></div>
   </article></div>
     <div id="schoolEmpty" class="empty">没有符合当前筛选条件的学校。</div>
     <div id="schoolVisitsPanel" class="section panel hidden"><div class="section-head"><div><h2>探校计划</h2><p>先安排秋季开放日，再用统一模板记录学校和孩子的反馈。</p></div></div><div class="action-card-grid"><div class="action-card"><strong>2026年8–9月 · 第一轮开放日</strong><p>优先预约 THIS、WAB、ISB、BWYA 等主候选，重点观察 G6 课程、英语支持和学生状态。</p><button class="btn btn-soft" data-go="application">查看准备清单</button></div><div class="action-card"><strong>2026年10–11月 · 第二轮深度探校</strong><p>围绕数学进度、英文写作、EAL、课后活动、费用和家长通勤做定向提问。</p><button class="btn btn-soft" data-go="schools">回到学校库</button></div><div class="action-card"><strong>探校记录模板</strong><p>每次探校固定记录：事实、孩子感受、家长判断、待核验问题、是否进入申请名单。</p><button class="btn btn-soft" data-go="data">由数据入口补充</button></div></div></div>
@@ -2002,8 +2002,9 @@ function init() {
   document.getElementById("schoolList").addEventListener("click", event => {
     const button = event.target.closest("button"); if (!button) return;
     const card = button.closest(".school-card"); if (!card) return;
-    if (button.dataset.action === "compare") toggleCompare(card.dataset.schoolId);
-    if (button.dataset.action === "detail") renderDetail(card.dataset.schoolId);
+    const schoolId = button.dataset.schoolId || card.dataset.schoolId;
+    if (button.dataset.action === "compare") toggleCompare(schoolId);
+    if (button.dataset.action === "detail") renderDetail(schoolId);
   });
   document.getElementById("closeSheet").addEventListener("click", closeDetail);
   document.getElementById("detailAnchorNav").addEventListener("click", event => {
