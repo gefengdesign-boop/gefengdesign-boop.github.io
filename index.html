@@ -1151,7 +1151,10 @@ function renderFitRadar(schoolsToRender, note = "六维分数为当前模型初�
 function switchView(view) {
   activeView = view;
   document.querySelectorAll(".view").forEach(section => section.classList.toggle("active", section.id === `view-${view}`));
-  document.querySelectorAll(".nav-btn").forEach(button => button.classList.toggle("active", button.dataset.view === view));
+  document.querySelectorAll(".nav-btn").forEach(button => {
+    const isSchoolSection = button.dataset.view === "schools" && view === "compare";
+    button.classList.toggle("active", button.dataset.view === view || isSchoolSection);
+  });
   window.scrollTo({ top: 0, behavior: "smooth" });
   if (view === "compare") renderCompare();
   if (view === "progress") renderProgress();
