@@ -763,6 +763,7 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
 
   <section id="view-compare" class="view">
     <div class="page-intro"><h1><span class="emoji">🆚</span> 学校对比</h1><p>最多选择 4 所。六个适配维度独立呈现，综合排序分仅作为加权排序参考。</p></div>
+    <div class="subnav" aria-label="学校功能"><button data-school-subview="library">学校列表</button><button class="active" data-school-subview="compare">学校对比 <span id="compareBadgeCompare">3</span></button><button data-school-subview="visits">探校计划</button></div>
     <div class="section panel">
       <div class="section-head"><div><h2>当前选择</h2><p>至少选择两所学校后生成对比。</p></div><button id="goSchoolsBtn" class="section-link">调整学校</button></div>
       <div id="compareSelection" class="compare-selection"></div>
@@ -1165,6 +1166,7 @@ function switchSchoolSubview(view) {
   const visits = document.getElementById("schoolVisitsPanel");
   document.querySelectorAll("[data-school-subview]").forEach(button => button.classList.toggle("active", button.dataset.schoolSubview === view));
   if (view === "compare") { switchView("compare"); return; }
+  if (activeView !== "schools") switchView("schools");
   const showLibrary = view === "library";
   [library, controls, meta, empty].forEach(element => element?.classList.toggle("hidden", !showLibrary));
   visits?.classList.toggle("hidden", view !== "visits");
@@ -1173,6 +1175,8 @@ function switchSchoolSubview(view) {
 
 function updateSelectionUi() {
   document.getElementById("compareBadge").textContent = workspaceState.selectedSchoolIds.length;
+  const compareBadgeCompare = document.getElementById("compareBadgeCompare");
+  if (compareBadgeCompare) compareBadgeCompare.textContent = workspaceState.selectedSchoolIds.length;
   document.getElementById("compareStatus").textContent = `已选 ${workspaceState.selectedSchoolIds.length}/4 所对比`;
   document.querySelectorAll(".school-card").forEach(card => {
     const selected = workspaceState.selectedSchoolIds.includes(card.dataset.schoolId);
