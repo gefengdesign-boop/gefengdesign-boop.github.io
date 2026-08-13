@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="120" fill="#126448"/>
-  <path d="M130 160h252v42H130zM130 235h182v42H130zM130 310h252v42H130z" fill="#fff" opacity=".22"/>
-  <text x="256" y="322" text-anchor="middle" font-size="250" font-weight="800" font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#fff">格</text>
-</svg>
