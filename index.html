@@ -1015,6 +1015,7 @@ const legacyKeys = {
 };
 
 let activeView = "dashboard";
+let activeDetailSchoolId = null;
 let activeFilter = "all";
 let activeReviewFilter = "open";
 let deferredInstallPrompt = null;
@@ -1474,6 +1475,7 @@ function renderHeroVisual(school) {
 
 function renderDetail(id) {
   const school = getSchool(id); if (!school) return;
+  activeDetailSchoolId = id;
   document.getElementById("sheetSchoolLogo").innerHTML = renderSchoolLogo(school);
   document.getElementById("sheetSchoolName").textContent = school.nameZh;
   document.getElementById("sheetSchoolMeta").textContent = `${school.nameEn} · ${school.district} · ${school.targetGradeName}`;
@@ -1510,7 +1512,7 @@ function renderDetail(id) {
   document.querySelectorAll("#detailAnchorNav button").forEach(button => button.classList.toggle("active", button.dataset.detailAnchor === "detail-overview"));
   document.body.style.overflow = "hidden";
 }
-function closeDetail() { document.getElementById("sheetBackdrop").classList.remove("open"); document.body.style.overflow = ""; }
+function closeDetail() { document.getElementById("sheetBackdrop").classList.remove("open"); activeDetailSchoolId = null; document.body.style.overflow = ""; }
 function openLightbox(url, alt, caption) {
   document.getElementById("lightboxImage").src = url;
   document.getElementById("lightboxImage").alt = alt || "校园设施大图";
@@ -2045,6 +2047,7 @@ async function importBackupFile(file) {
     saveJson(storageKeys.state, workspaceState);
     syncMeta.localDirty = true;
     saveJson(storageKeys.syncMeta, syncMeta);
+    scheduleCloudPush();
     applyStateToUi();
     showToast("备份已导入");
   } catch (error) {
@@ -2077,6 +2080,7 @@ function applyStateToUi() {
   if (activeView === "compare") renderCompare();
   if (activeView === "data") renderDataCenter();
   if (activeView === "schools") renderVisitCalendar();
+  if (activeDetailSchoolId && document.getElementById("sheetBackdrop")?.classList.contains("open")) renderDetail(activeDetailSchoolId);
   renderSyncUi();
 }
 
