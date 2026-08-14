@@ -20,7 +20,7 @@ begin
   on conflict (id) do nothing;
 
   insert into public.workspace_members (workspace_id, auth_user_id, display_name, role)
-  values (shared_workspace_id, device_user_id, '免账号设备', 'member')
+  values (shared_workspace_id, device_user_id, '免账号设备', 'admin')
   on conflict do nothing;
 
   return shared_workspace_id;
@@ -29,4 +29,3 @@ $$;
 
 revoke all on function public.provision_shared_workspace() from public;
 grant execute on function public.provision_shared_workspace() to authenticated;
-

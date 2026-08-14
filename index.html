@@ -1838,14 +1838,24 @@ async function provisionSharedWorkspace() {
   return cloudConfig.workspaceId;
 }
 
+function hasFamilyData(state) {
+  return Boolean(state && (
+    (Array.isArray(state.visitEvents) && state.visitEvents.length) ||
+    (state.familyNotes && Object.keys(state.familyNotes).length) ||
+    (state.applicationTasks && Object.keys(state.applicationTasks).length) ||
+    (Array.isArray(state.lexileTests) && state.lexileTests.length) ||
+    (state.reviewDecisions && Object.keys(state.reviewDecisions).length)
+  ));
+}
+
 async function connectAnonymousCloud({ silent = false } = {}) {
   try {
     if (!cloudSession?.accessToken) await signInAnonymousCloud(silent);
     await provisionSharedWorkspace();
     const remote = await fetchRemoteState();
     if (remote) {
-      if (syncMeta.localDirty && Number(workspaceState.revision || 0) === 0) {
-        await pushCloudState(false, true);
+      if (syncMeta.localDirty && hasFamilyData(workspaceState) && !hasFamilyData(remote.state)) {
+        await pushCloudState(true, true);
       } else if (!syncMeta.localDirty) {
         await applyRemoteState(remote, silent);
       }
