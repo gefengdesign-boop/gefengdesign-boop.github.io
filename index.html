@@ -44,6 +44,7 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
 @media(min-width:760px){.appbar{padding:0 24px}.data-status{display:inline-block}main{padding:28px 24px 70px}.hero{grid-template-columns:1.35fr .65fr}.hero-main{padding:34px}.profile-panel{padding:22px}.dashboard-grid{grid-template-columns:repeat(4,1fr)}.dashboard-columns{display:grid;grid-template-columns:1.08fr .92fr;gap:14px}.school-list{grid-template-columns:repeat(2,minmax(0,1fr))}.controls{margin-left:0;margin-right:0;padding-left:0;padding-right:0;display:grid;grid-template-columns:minmax(300px,1fr) auto;align-items:center;gap:12px}.filters{margin:0}.metric-grid{grid-template-columns:repeat(4,1fr)}.metric{border-bottom:0!important;border-right:1px solid var(--line)!important}.metric:last-child{border-right:0!important}.progress-summary{grid-template-columns:repeat(4,1fr)}.task-groups{grid-template-columns:repeat(2,minmax(0,1fr))}.bottom-nav{position:sticky;top:58px;bottom:auto;z-index:40;width:min(1180px,100%);margin:0 auto;padding:8px 24px;border-top:0;border-bottom:1px solid var(--line);grid-template-columns:repeat(4,120px);justify-content:start;background:rgba(244,245,242,.95)}.nav-btn{flex-direction:row;justify-content:center;min-height:38px;border-radius:999px;font-size:12px}.nav-btn.active{background:var(--surface-3)}.nav-icon{font-size:15px}.nav-badge{margin-left:92px}.detail-sheet{left:50%;right:auto;bottom:auto;top:50%;width:min(720px,calc(100% - 36px));height:min(90vh,900px);transform:translate(-50%,-50%);border-radius:24px}.sheet-body{padding:18px}.sheet-actions{grid-template-columns:180px 180px;justify-content:end}.detail-scores{grid-template-columns:repeat(4,1fr)}.note-controls{grid-template-columns:110px 1fr}.page-intro h1{font-size:36px}}
 @media(min-width:1080px){.school-list{grid-template-columns:repeat(3,minmax(0,1fr))}.dashboard-columns{grid-template-columns:1fr 1fr}.hero h1{font-size:34px}}
 .metric{min-width:0}.metric strong{overflow-wrap:anywhere}.metric small{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.35}
+.anon-legacy{display:none!important}
 @media(min-width:760px) and (max-width:1099px){.school-list .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.school-list .metric{border-bottom:1px solid var(--line)!important;border-right:0!important}.school-list .metric:nth-child(odd){border-right:1px solid var(--line)!important}.school-list .metric:nth-child(n+3){border-bottom:0!important}}
 @media(min-width:1100px){.school-list .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.school-list .metric{border-bottom:1px solid var(--line)!important;border-right:0!important}.school-list .metric:nth-child(odd){border-right:1px solid var(--line)!important}.school-list .metric:nth-child(n+3){border-bottom:0!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast{transition:none}}
@@ -781,7 +782,7 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
     <div class="card-actions"><button class="btn" data-action="compare" data-school-id="ju-oca-beijing">加入对比</button><button class="btn btn-primary" data-action="detail" data-school-id="ju-oca-beijing">查看详情</button></div>
   </article></div>
     <div id="schoolEmpty" class="empty">没有符合当前筛选条件的学校。</div>
-    <div id="schoolVisitsPanel" class="section panel hidden"><div class="section-head"><div><h2>访校计划</h2><p>把学校官方开放日和家庭自己安排的访校日程放在同一份日历里。</p></div><button id="newVisitBtn" class="btn btn-primary">新建访校</button></div><div class="visit-toolbar"><div class="visit-toolbar-title" id="visitMonthLabel"></div><div class="visit-toolbar-actions"><button id="visitPrevMonth" class="btn" type="button" aria-label="上个月">‹</button><button id="visitToday" class="btn" type="button">今天</button><button id="visitNextMonth" class="btn" type="button" aria-label="下个月">›</button></div></div><div class="visit-calendar" aria-label="访校日历"><div class="visit-weekdays"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div><div id="visitCalendarGrid" class="visit-calendar-grid"></div></div><div id="visitDayList" class="visit-day-list"></div><p class="visit-sync-note">日程会保存在本机；如果已登录家庭云空间，可在数据中心手动推送并在其他设备拉取。当前公共免登录写入还需要云端安全策略配合。</p><div class="section panel" style="margin-top:16px"><div class="section-head"><div><h2>探校计划</h2><p>先安排秋季开放日，再用统一模板记录学校和孩子的反馈。</p></div></div><div class="action-card-grid"><div class="action-card"><strong>2026年8–9月 · 第一轮开放日</strong><p>优先预约 THIS、WAB、ISB、BWYA 等主候选，重点观察 G6 课程、英语支持和学生状态。</p><button class="btn btn-soft" data-go="application">查看准备清单</button></div><div class="action-card"><strong>2026年10–11月 · 第二轮深度探校</strong><p>围绕数学进度、英文写作、EAL、课后活动、费用和家长通勤做定向提问。</p><button class="btn btn-soft" data-go="schools">回到学校库</button></div><div class="action-card"><strong>探校记录模板</strong><p>每次探校固定记录：事实、孩子感受、家长判断、待核验问题、是否进入申请名单。</p><button class="btn btn-soft" data-go="data">由数据入口补充</button></div></div></div></div>
+    <div id="schoolVisitsPanel" class="section panel hidden"><div class="section-head"><div><h2>访校计划</h2><p>把学校官方开放日和家庭自己安排的访校日程放在同一份日历里。</p></div><button id="newVisitBtn" class="btn btn-primary">新建访校</button></div><div class="visit-toolbar"><div class="visit-toolbar-title" id="visitMonthLabel"></div><div class="visit-toolbar-actions"><button id="visitPrevMonth" class="btn" type="button" aria-label="上个月">‹</button><button id="visitToday" class="btn" type="button">今天</button><button id="visitNextMonth" class="btn" type="button" aria-label="下个月">›</button></div></div><div class="visit-calendar" aria-label="访校日历"><div class="visit-weekdays"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div><div id="visitCalendarGrid" class="visit-calendar-grid"></div></div><div id="visitDayList" class="visit-day-list"></div><p class="visit-sync-note">日程会自动保存到家庭共享云空间，手机、电脑和家人的设备打开网站后会自动同步；云端暂时不可用时仍会保留本机记录。</p><div class="section panel" style="margin-top:16px"><div class="section-head"><div><h2>探校计划</h2><p>先安排秋季开放日，再用统一模板记录学校和孩子的反馈。</p></div></div><div class="action-card-grid"><div class="action-card"><strong>2026年8–9月 · 第一轮开放日</strong><p>优先预约 THIS、WAB、ISB、BWYA 等主候选，重点观察 G6 课程、英语支持和学生状态。</p><button class="btn btn-soft" data-go="application">查看准备清单</button></div><div class="action-card"><strong>2026年10–11月 · 第二轮深度探校</strong><p>围绕数学进度、英文写作、EAL、课后活动、费用和家长通勤做定向提问。</p><button class="btn btn-soft" data-go="schools">回到学校库</button></div><div class="action-card"><strong>探校记录模板</strong><p>每次探校固定记录：事实、孩子感受、家长判断、待核验问题、是否进入申请名单。</p><button class="btn btn-soft" data-go="data">由数据入口补充</button></div></div></div></div>
   </section>
 
   <div id="visitModal" class="visit-modal" role="dialog" aria-modal="true" aria-labelledby="visitModalTitle"><div class="visit-modal-card"><div class="visit-modal-head"><h2 id="visitModalTitle">新建访校日程</h2><button id="closeVisitModal" class="close-btn" type="button" aria-label="关闭">×</button></div><form id="visitForm" class="visit-form"><input id="visitEventId" type="hidden"><div class="field"><label for="visitSchool">学校</label><select id="visitSchool" required></select></div><div class="visit-form two"><div class="field"><label for="visitDate">日期</label><input id="visitDate" type="date" required></div><div class="field"><label for="visitType">访校类型</label><select id="visitType"><option value="open_day">开放日</option><option value="campus_visit">校园参观</option><option value="admission_event">招生说明会</option><option value="interview">面试</option><option value="other">其他</option></select></div></div><div class="visit-form two"><div class="field"><label for="visitStartTime">开始时间</label><input id="visitStartTime" type="time"></div><div class="field"><label for="visitEndTime">结束时间</label><input id="visitEndTime" type="time"></div></div><div class="visit-form two"><div class="field"><label for="visitStatus">状态</label><select id="visitStatus"><option value="planned">待确认</option><option value="booked">已预约</option><option value="done">已完成</option><option value="cancelled">已取消</option></select></div><div class="field"><label for="visitSource">来源</label><select id="visitSource"><option value="family">家庭自建</option><option value="official">学校官方</option></select></div></div><div class="field"><label for="visitAddress">地址</label><input id="visitAddress" placeholder="默认带出学校地址，可修改"></div><div class="field"><label for="visitContact">联系人 / 电话</label><input id="visitContact" placeholder="招生办或联系人"></div><div class="field"><label for="visitBookingUrl">预约链接</label><input id="visitBookingUrl" type="url" placeholder="https://"></div><div class="field"><label for="visitNote">备注</label><textarea id="visitNote" placeholder="想重点了解什么？"></textarea></div><div class="visit-form-actions"><button id="cancelVisitBtn" class="btn" type="button">取消</button><button class="btn btn-primary" type="submit">保存日程</button></div></form></div></div>
@@ -862,18 +863,19 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
 
       <div class="data-card">
         <h2><span class="emoji">☁️</span> 家庭云同步</h2>
-        <p class="subcopy">仅同步家庭笔记、对比、任务、核验状态和通勤样本。学校官方资料继续由版本化种子数据管理。</p>
-        <div class="connection-status"><div><strong id="cloudStatusTitle">本地模式</strong><span id="cloudStatusText">未配置 Supabase，数据只保存在当前设备。</span></div><span id="cloudStatusDot" class="status-dot"></span></div>
+        <p class="subcopy">访校日程会自动保存到家庭共享云空间。不需要注册账号，手机、电脑和家人的设备打开同一网站即可同步。</p>
+        <div class="connection-status"><div><strong id="cloudStatusTitle">正在准备云同步</strong><span id="cloudStatusText">网站打开后会自动连接家庭共享空间。</span></div><span id="cloudStatusDot" class="status-dot"></span></div>
         <div class="form-grid two" style="margin-top:12px">
           <div class="field"><label for="supabaseUrl">Supabase Project URL</label><input id="supabaseUrl" inputmode="url" placeholder="https://xxxx.supabase.co"></div>
           <div class="field"><label for="supabaseKey">Publishable / anon key</label><input id="supabaseKey" type="password" autocomplete="off" placeholder="sb_publishable_... 或 anon key"><small>可公开的客户端 Key；不要填写 service_role key。</small></div>
-          <div class="field"><label for="workspaceId">家庭 Workspace ID</label><input id="workspaceId" placeholder="首次登录后可创建"></div>
-          <div class="field"><label for="cloudEmail">家庭成员邮箱</label><input id="cloudEmail" type="email" autocomplete="username" placeholder="name@example.com"></div>
-          <div class="field"><label for="cloudPassword">密码</label><input id="cloudPassword" type="password" autocomplete="current-password" placeholder="不会保存到本机"></div>
+          <div class="field anon-legacy"><label for="workspaceId">家庭 Workspace ID</label><input id="workspaceId" placeholder="自动配置"></div>
+          <div class="field anon-legacy"><label for="cloudEmail">家庭成员邮箱</label><input id="cloudEmail" type="email" autocomplete="username" placeholder="不再需要"></div>
+          <div class="field anon-legacy"><label for="cloudPassword">密码</label><input id="cloudPassword" type="password" autocomplete="current-password" placeholder="不再需要"></div>
         </div>
         <div class="inline-actions">
-          <button id="saveCloudConfig" class="btn">保存配置</button>
-          <button id="cloudSignIn" class="btn btn-primary">登录</button>
+          <button id="saveCloudConfig" class="btn anon-legacy">保存配置</button>
+          <button id="cloudAnonymousConnect" class="btn btn-primary">连接家庭云</button>
+          <button id="cloudSignIn" class="btn anon-legacy">登录</button>
           <button id="createWorkspace" class="btn hidden">创建家庭空间</button>
           <button id="cloudPull" class="btn hidden">从云端拉取</button>
           <button id="cloudPush" class="btn hidden">推送到云端</button>
@@ -903,7 +905,7 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
         <div class="data-panel">
           <div class="data-row"><div><strong>离线学校库</strong><span>学校资料、来源和对比逻辑内置</span></div><span class="data-badge" style="background:var(--accent-soft);color:var(--accent)">已接入</span></div>
           <div class="data-row"><div><strong>PWA 离线缓存</strong><span>部署到 HTTPS 域名后可安装到手机桌面</span></div><span class="data-badge" style="background:var(--accent-soft);color:var(--accent)">已准备</span></div>
-          <div class="data-row"><div><strong>Supabase 云同步</strong><span>需要执行 V0.5 SQL 并创建三个 Auth 用户</span></div><span id="supabaseCapability" class="data-badge">待配置</span></div>
+          <div class="data-row"><div><strong>Supabase 云同步</strong><span>匿名设备自动加入家庭共享空间，不需要创建账号</span></div><span id="supabaseCapability" class="data-badge">自动连接</span></div>
           <div class="data-row"><div><strong>高德通勤样本</strong><span>通过 Edge Function 隐藏 Web Service Key</span></div><span id="amapCapability" class="data-badge">待配置</span></div>
           <div class="data-row"><div><strong>EdgeOne 免费域名</strong><span>可直接上传 dist 文件夹，无构建依赖</span></div><span class="data-badge" style="background:var(--accent-soft);color:var(--accent)">可部署</span></div>
         </div>
@@ -1020,7 +1022,7 @@ let workspaceState = loadWorkspaceState();
 const defaultCloudConfig = {
   supabaseUrl: "https://vbtdyouyecqbsjyfenah.supabase.co",
   supabaseKey: "sb_publishable_3OQ-2tnXEt6cl5JKbEUXOg_setqkvcN",
-  workspaceId: ""
+  workspaceId: "11111111-1111-4111-8111-111111111111"
 };
 let cloudConfig = { ...defaultCloudConfig, ...readJson(storageKeys.cloudConfig, {}) };
 let cloudSession = readJson(storageKeys.cloudSession, null);
@@ -1102,6 +1104,14 @@ function persistState(reason = "本机修改") {
   syncMeta.localDirty = true;
   saveJson(storageKeys.syncMeta, syncMeta);
   renderSyncUi(reason);
+  scheduleCloudPush();
+}
+
+let cloudPushTimer = null;
+function scheduleCloudPush() {
+  if (!cloudSession?.accessToken || !cloudConfig.workspaceId) return;
+  clearTimeout(cloudPushTimer);
+  cloudPushTimer = setTimeout(() => pushCloudState(false, true), 700);
 }
 
 function escapeHtml(value) {
@@ -1274,8 +1284,8 @@ function renderVisitCalendar() {
 function populateVisitSchools(selectedId = "") { const select = document.getElementById("visitSchool"); if (!select) return; select.innerHTML = `<option value="">请选择学校</option>${schools.map(school => `<option value="${escapeHtml(school.id)}">${escapeHtml(school.nameZh)}</option>`).join("")}`; if (selectedId) select.value = selectedId; }
 function openVisitModal(event = null) { populateVisitSchools(event?.schoolId || ""); document.getElementById("visitModalTitle").textContent = event ? "编辑访校日程" : "新建访校日程"; document.getElementById("visitEventId").value = event?.id || ""; document.getElementById("visitDate").value = event?.date || selectedVisitDate || localTodayKey(); document.getElementById("visitType").value = event?.type || "open_day"; document.getElementById("visitStartTime").value = event?.startTime || ""; document.getElementById("visitEndTime").value = event?.endTime || ""; document.getElementById("visitStatus").value = event?.status || "planned"; document.getElementById("visitSource").value = event?.source || "family"; document.getElementById("visitAddress").value = event?.address || getSchool(event?.schoolId)?.address || ""; document.getElementById("visitContact").value = event?.contact || ""; document.getElementById("visitBookingUrl").value = event?.bookingUrl || ""; document.getElementById("visitNote").value = event?.note || ""; document.getElementById("visitModal").classList.add("open"); }
 function closeVisitModal() { document.getElementById("visitModal")?.classList.remove("open"); }
-function saveVisitEvent(event) { event.preventDefault(); const id = document.getElementById("visitEventId").value || `visit-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`; const schoolId = document.getElementById("visitSchool").value; const date = document.getElementById("visitDate").value; if (!schoolId || !date) { showToast("请填写学校和日期"); return; } const existing = workspaceState.visitEvents.find(item => item.id === id); const next = { id, schoolId, date, startTime: document.getElementById("visitStartTime").value, endTime: document.getElementById("visitEndTime").value, type: document.getElementById("visitType").value, title: visitTypeLabels[document.getElementById("visitType").value] || "访校活动", status: document.getElementById("visitStatus").value, source: document.getElementById("visitSource").value, address: document.getElementById("visitAddress").value.trim(), contact: document.getElementById("visitContact").value.trim(), bookingUrl: document.getElementById("visitBookingUrl").value.trim(), note: document.getElementById("visitNote").value.trim(), updatedAt: new Date().toISOString() }; workspaceState.visitEvents = existing ? workspaceState.visitEvents.map(item => item.id === id ? next : item) : [...workspaceState.visitEvents, next]; selectedVisitDate = date; visitCalendarDate = new Date(`${date}T00:00:00`); persistState(existing ? "访校日程已更新" : "访校日程已新增"); closeVisitModal(); renderVisitCalendar(); showToast(existing ? "访校日程已更新" : "访校日程已保存；请在数据入口推送云端"); }
-function deleteVisitEvent(id) { const event = workspaceState.visitEvents.find(item => item.id === id); if (!event) return; if (!window.confirm(`确定删除“${visitSchoolName(event)}”的访校日程吗？`)) return; workspaceState.visitEvents = workspaceState.visitEvents.filter(item => item.id !== id); persistState("访校日程已删除"); renderVisitCalendar(); showToast("访校日程已删除；请在数据入口推送云端"); }
+function saveVisitEvent(event) { event.preventDefault(); const id = document.getElementById("visitEventId").value || `visit-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`; const schoolId = document.getElementById("visitSchool").value; const date = document.getElementById("visitDate").value; if (!schoolId || !date) { showToast("请填写学校和日期"); return; } const existing = workspaceState.visitEvents.find(item => item.id === id); const next = { id, schoolId, date, startTime: document.getElementById("visitStartTime").value, endTime: document.getElementById("visitEndTime").value, type: document.getElementById("visitType").value, title: visitTypeLabels[document.getElementById("visitType").value] || "访校活动", status: document.getElementById("visitStatus").value, source: document.getElementById("visitSource").value, address: document.getElementById("visitAddress").value.trim(), contact: document.getElementById("visitContact").value.trim(), bookingUrl: document.getElementById("visitBookingUrl").value.trim(), note: document.getElementById("visitNote").value.trim(), updatedAt: new Date().toISOString() }; workspaceState.visitEvents = existing ? workspaceState.visitEvents.map(item => item.id === id ? next : item) : [...workspaceState.visitEvents, next]; selectedVisitDate = date; visitCalendarDate = new Date(`${date}T00:00:00`); persistState(existing ? "访校日程已更新" : "访校日程已新增"); closeVisitModal(); renderVisitCalendar(); showToast(existing ? "访校日程已更新" : "访校日程已保存，正在同步云端" ); }
+function deleteVisitEvent(id) { const event = workspaceState.visitEvents.find(item => item.id === id); if (!event) return; if (!window.confirm(`确定删除“${visitSchoolName(event)}”的访校日程吗？`)) return; workspaceState.visitEvents = workspaceState.visitEvents.filter(item => item.id !== id); persistState("访校日程已删除"); renderVisitCalendar(); showToast("访校日程已删除，正在同步云端"); }
 
 function updateSelectionUi() {
   document.getElementById("compareBadge").textContent = workspaceState.selectedSchoolIds.length;
@@ -1790,6 +1800,66 @@ async function cloudFetch(path, options = {}) {
   return body;
 }
 
+async function signInAnonymousCloud(silent = false) {
+  if (!normalizedSupabaseUrl() || !cloudConfig.supabaseKey) throw new Error("云同步配置缺失");
+  const response = await fetch(`${normalizedSupabaseUrl()}/auth/v1/signup`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", apikey: cloudConfig.supabaseKey },
+    body: "{}"
+  });
+  const result = await response.json();
+  if (!response.ok || !result.access_token) {
+    throw new Error(result.msg || result.error_description || "匿名云同步尚未启用");
+  }
+  cloudSession = {
+    accessToken: result.access_token,
+    refreshToken: result.refresh_token,
+    expiresAt: Date.now() + Number(result.expires_in || 3600) * 1000,
+    user: result.user,
+    anonymous: true
+  };
+  saveJson(storageKeys.cloudSession, cloudSession);
+  cloudConfig.workspaceId = cloudConfig.workspaceId || defaultCloudConfig.workspaceId;
+  saveJson(storageKeys.cloudConfig, cloudConfig);
+  return cloudSession;
+}
+
+async function provisionSharedWorkspace() {
+  const result = await cloudFetch("/rest/v1/rpc/provision_shared_workspace", {
+    method: "POST",
+    headers: { Prefer: "return=representation" },
+    body: "{}"
+  });
+  const workspaceId = Array.isArray(result) ? result[0] : result;
+  if (typeof workspaceId === "string") cloudConfig.workspaceId = workspaceId;
+  else if (workspaceId?.workspace_id) cloudConfig.workspaceId = workspaceId.workspace_id;
+  if (!cloudConfig.workspaceId) throw new Error("家庭共享空间初始化失败");
+  saveJson(storageKeys.cloudConfig, cloudConfig);
+  return cloudConfig.workspaceId;
+}
+
+async function connectAnonymousCloud({ silent = false } = {}) {
+  try {
+    if (!cloudSession?.accessToken) await signInAnonymousCloud(silent);
+    await provisionSharedWorkspace();
+    const remote = await fetchRemoteState();
+    if (remote) {
+      if (syncMeta.localDirty && Number(workspaceState.revision || 0) === 0) {
+        await pushCloudState(false, true);
+      } else if (!syncMeta.localDirty) {
+        await applyRemoteState(remote, silent);
+      }
+    } else {
+      await pushCloudState(true, true);
+    }
+    renderCloudUi();
+    if (!silent) showToast("家庭云已连接，日程会自动同步");
+  } catch (error) {
+    renderCloudUi("error");
+    if (!silent) showToast(`云同步连接失败：${error.message}`);
+  }
+}
+
 async function createCloudWorkspace() {
   try {
     const userId = cloudSession?.user?.id;
@@ -1822,6 +1892,18 @@ function autoBackupCurrentState(label) {
   saveJson(storageKeys.autoBackup, { label, savedAt: new Date().toISOString(), state: workspaceState });
 }
 
+async function applyRemoteState(remote, silent = false) {
+  const remoteRevision = Number(remote.revision || 0);
+  autoBackupCurrentState("云端同步前自动备份");
+  workspaceState = normalizeState(remote.state);
+  workspaceState.revision = remoteRevision;
+  saveJson(storageKeys.state, workspaceState);
+  syncMeta = { lastSyncedRevision: remoteRevision, lastSyncedAt: new Date().toISOString(), localDirty: false };
+  saveJson(storageKeys.syncMeta, syncMeta);
+  applyStateToUi();
+  if (!silent) showToast("云端数据已同步");
+}
+
 async function pullCloudState() {
   try {
     const remote = await fetchRemoteState();
@@ -1831,23 +1913,16 @@ async function pullCloudState() {
       const confirmed = window.confirm("本机和云端都有更新。继续拉取会用云端状态替换本机状态，系统会先自动备份。是否继续？");
       if (!confirmed) return;
     }
-    autoBackupCurrentState("云端拉取前自动备份");
-    workspaceState = normalizeState(remote.state);
-    workspaceState.revision = remoteRevision;
-    saveJson(storageKeys.state, workspaceState);
-    syncMeta = { lastSyncedRevision: remoteRevision, lastSyncedAt: new Date().toISOString(), localDirty: false };
-    saveJson(storageKeys.syncMeta, syncMeta);
-    applyStateToUi();
+    await applyRemoteState(remote);
     setCloudLog(`已从云端拉取 R${remoteRevision}
 云端更新时间：${remote.updated_at}`);
-    showToast("云端数据已拉取");
   } catch (error) {
     setCloudLog(error.message, true);
     showToast(`拉取失败：${error.message}`);
   }
 }
 
-async function pushCloudState(isInitial = false) {
+async function pushCloudState(isInitial = false, silent = false) {
   try {
     if (!cloudConfig.workspaceId) throw new Error("请填写或创建 Workspace ID");
     const remote = await fetchRemoteState();
@@ -1870,10 +1945,10 @@ async function pushCloudState(isInitial = false) {
     renderSyncUi();
     renderDataStats();
     setCloudLog(`已推送到云端 R${workspaceState.revision}`);
-    showToast("本机数据已同步到云端");
+    if (!silent) showToast("本机数据已同步到云端");
   } catch (error) {
     setCloudLog(error.message, true);
-    showToast(`推送失败：${error.message}`);
+    if (!silent) showToast(`推送失败：${error.message}`);
   }
 }
 
@@ -1896,8 +1971,8 @@ function renderCloudUi(forceStatus) {
     statusText.textContent = "请检查 Project URL、客户端 Key、账号和 SQL 初始化。";
     dot.className = "status-dot error";
   } else if (signedIn) {
-    statusTitle.textContent = "已登录云空间";
-    statusText.textContent = `${cloudSession.user?.email || "家庭成员"} · ${cloudConfig.workspaceId ? "已配置 Workspace" : "尚未创建 Workspace"}`;
+    statusTitle.textContent = "家庭云已连接";
+    statusText.textContent = `${cloudSession.anonymous ? "免账号设备" : (cloudSession.user?.email || "家庭成员")} · 日程自动同步`;
     dot.className = `status-dot ${syncMeta.localDirty ? "warning" : "online"}`;
   } else if (configured) {
     statusTitle.textContent = "已配置，尚未登录";
@@ -1909,6 +1984,7 @@ function renderCloudUi(forceStatus) {
     dot.className = "status-dot";
   }
   ["createWorkspace", "cloudPull", "cloudPush", "cloudSignOut"].forEach(id => document.getElementById(id).classList.toggle("hidden", !signedIn));
+  document.getElementById("cloudAnonymousConnect").classList.toggle("hidden", signedIn);
   document.getElementById("cloudSignIn").classList.toggle("hidden", signedIn);
   const supabaseBadge = document.getElementById("supabaseCapability");
   supabaseBadge.textContent = signedIn ? "已连接" : configured ? "待登录" : "待配置";
@@ -2033,6 +2109,13 @@ function checkForFreshBuild() {
 }
 
 setInterval(checkForFreshBuild, 60 * 1000);
+setInterval(async () => {
+  if (document.visibilityState !== "visible" || !cloudSession?.accessToken || !cloudConfig.workspaceId || syncMeta.localDirty) return;
+  try {
+    const remote = await fetchRemoteState();
+    if (remote && Number(remote.revision || 0) > Number(workspaceState.revision || 0)) await applyRemoteState(remote, true);
+  } catch (error) { /* 云端短暂不可用时保留本机数据 */ }
+}, 30 * 1000);
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") checkForFreshBuild();
 });
@@ -2108,6 +2191,7 @@ function init() {
     if (button) setReviewDecision(button.dataset.reviewId, button.dataset.reviewAction);
   });
   document.getElementById("saveCloudConfig").addEventListener("click", saveCloudConfiguration);
+  document.getElementById("cloudAnonymousConnect").addEventListener("click", () => connectAnonymousCloud());
   document.getElementById("cloudSignIn").addEventListener("click", signInCloud);
   document.getElementById("createWorkspace").addEventListener("click", createCloudWorkspace);
   document.getElementById("cloudPull").addEventListener("click", pullCloudState);
@@ -2124,6 +2208,7 @@ function init() {
   initPwa();
   applyStateToUi();
   filterSchools();
+  setTimeout(() => connectAnonymousCloud({ silent: true }), 900);
 }
 init();
 
