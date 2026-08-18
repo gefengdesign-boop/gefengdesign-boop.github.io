@@ -97,7 +97,8 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
 #view-map .inline-actions .btn{min-width:150px}
 #view-map .subnav button{min-height:44px;padding:9px 14px;font-size:13px}
 #view-map .map-vocab-toolbar{display:grid;gap:12px;margin-bottom:14px;padding:14px;border-radius:16px;background:var(--surface-2)}#view-map .map-vocab-subnav{margin:0}#view-map .map-vocab-subnav button{min-height:40px}#view-map .map-vocab-filters{grid-template-columns:repeat(2,minmax(0,1fr))}#view-map .map-vocab-list{display:grid;gap:8px}.map-vocab-card{padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff}.map-vocab-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.map-vocab-card h3{margin:0;font-size:16px}.map-vocab-card h3 small{margin-left:6px;color:var(--muted);font-size:11px;font-weight:600}.map-vocab-card p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.55}.map-vocab-card .tag{flex:0 0 auto}.map-vocab-context{color:var(--text-2)!important}.map-quiz-area{padding:16px;border:1px solid #a8c8b9;border-radius:17px;background:linear-gradient(145deg,#f5fbf7,#fff)}.map-quiz-progress{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:11px}.map-quiz-question{margin:16px 0;font-size:22px;line-height:1.3}.map-quiz-prompt{color:var(--muted);font-size:12px}.map-quiz-answer{min-height:48px!important;font-size:16px!important}.map-quiz-feedback{margin-top:10px;padding:10px;border-radius:12px;font-size:12px;line-height:1.55}.map-quiz-feedback.correct{background:#e7f5ec;color:#176344}.map-quiz-feedback.wrong{background:#fff0ed;color:#8c3e32}.map-quiz-result{display:grid;gap:10px}.map-quiz-result-score{font-size:32px;color:var(--accent)}.map-quiz-mistake{padding:10px;border-radius:11px;background:#fff4f1}.map-learning-summary{display:grid;gap:8px;margin-bottom:12px}.map-learning-card{padding:12px;border-radius:13px;background:var(--surface-2)}.map-learning-card strong{display:block;font-size:14px}.map-learning-card span{display:block;margin-top:3px;color:var(--muted);font-size:11px}@media(min-width:760px){#view-map .map-vocab-filters{grid-template-columns:2fr 1fr 1fr 1fr}.map-learning-summary{grid-template-columns:repeat(3,1fr)}}
-</style>
+ #view-map .map-vocab-card-actions{display:flex;gap:6px;margin-top:10px}.map-vocab-card-actions .btn{min-height:34px!important;padding:0 10px!important;font-size:11px!important}.map-flashcard-area{padding:18px;border:1px solid #b5cfe2;border-radius:18px;background:linear-gradient(145deg,#f4f9fd,#fff);text-align:center}.map-flashcard-face{min-height:160px;display:grid;place-items:center;padding:22px;border-radius:15px;background:#fff;box-shadow:var(--shadow-soft)}.map-flashcard-face strong{font-size:28px}.map-flashcard-face p{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.6}.map-flashcard-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:14px}.map-streak-banner{padding:13px;border-radius:14px;background:linear-gradient(120deg,#fff4d8,#fff9ee);color:#79551e}.map-streak-banner strong{font-size:18px}.map-badge-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.map-badge{padding:6px 9px;border-radius:999px;background:#e9f5ee;color:#176344;font-size:11px}.map-badge.locked{background:var(--surface-2);color:var(--muted)}.map-progress-chart{display:grid;gap:9px;margin-top:12px}.map-progress-row{display:grid;grid-template-columns:92px 1fr 45px;align-items:center;gap:8px;font-size:11px}.map-progress-track{height:10px;overflow:hidden;border-radius:99px;background:var(--surface-2)}.map-progress-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#5eaa82,#126448)}
+ </style>
 </head>
 <body class="access-locked">
 <div id="accessGate" class="access-gate" role="dialog" aria-modal="true" aria-labelledby="accessGateTitle">
@@ -801,10 +802,11 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
       <div class="section-head"><div><h2>MAP 词汇库 · G5–G6</h2><p>来自三份学习词库，共 680 个词条；先浏览，再用短测检验记忆。</p></div><span id="mapVocabularyStats" class="compare-status">正在加载</span></div>
       <div class="map-vocab-toolbar">
         <div class="subnav map-vocab-subnav" aria-label="词库学科"><button class="active" data-vocab-subject="language_usage">Language Usage</button><button data-vocab-subject="reading">Reading</button><button data-vocab-subject="math">Math</button></div>
-        <div class="form-grid map-vocab-filters"><div class="field"><label for="mapVocabSearch">搜索词条</label><input id="mapVocabSearch" placeholder="输入英文或中文关键词"></div><div class="field"><label for="mapVocabLevel">难度</label><select id="mapVocabLevel"><option value="all">全部词条</option><option value="core">核心词条</option><option value="advanced">自适应进阶</option></select></div><div class="field"><label for="mapQuizSize">测试题数</label><select id="mapQuizSize"><option value="10">10 题</option><option value="20">20 题</option></select></div><div class="field"><label for="mapQuizDirection">答题方向</label><select id="mapQuizDirection"><option value="english_to_chinese">英文 → 中文</option><option value="chinese_to_english">中文 → 英文</option><option value="mixed">中英混合</option></select></div></div>
-        <div class="inline-actions"><button id="mapBrowseBtn" class="btn btn-soft">浏览词库</button><button id="mapStartQuiz" class="btn btn-primary">开始词汇测试</button><button id="mapWrongQuiz" class="btn btn-soft">错题复习</button></div>
+        <div class="form-grid map-vocab-filters"><div class="field"><label for="mapVocabSearch">搜索词条</label><input id="mapVocabSearch" placeholder="输入英文或中文关键词"></div><div class="field"><label for="mapVocabLevel">难度</label><select id="mapVocabLevel"><option value="all">全部词条</option><option value="core">核心词条</option><option value="advanced">自适应进阶</option></select></div><div class="field"><label for="mapVocabStatus">状态</label><select id="mapVocabStatus"><option value="all">全部状态</option><option value="favorites">我的收藏</option><option value="mastered">已掌握</option><option value="review">待复习</option></select></div><div class="field"><label for="mapQuizSize">测试题数</label><select id="mapQuizSize"><option value="10">10 题</option><option value="20">20 题</option></select></div><div class="field"><label for="mapQuizDirection">答题方向</label><select id="mapQuizDirection"><option value="english_to_chinese">英文 → 中文</option><option value="chinese_to_english">中文 → 英文</option><option value="mixed">中英混合</option></select></div></div>
+        <div class="inline-actions"><button id="mapBrowseBtn" class="btn btn-soft">浏览词库</button><button id="mapStartQuiz" class="btn btn-primary">开始词汇测试</button><button id="mapWrongQuiz" class="btn btn-soft">错题复习</button><button id="mapFlashcardBtn" class="btn btn-soft">闪卡学习</button></div>
       </div>
       <div id="mapVocabList" class="map-vocab-list"></div>
+      <div id="mapFlashcardArea" class="map-flashcard-area hidden"></div>
       <div id="mapQuizArea" class="map-quiz-area hidden"></div>
     </div>
     <div class="section panel hidden" data-map-panel="records" id="mapRecordsPanel">
@@ -1068,7 +1070,7 @@ function createDefaultState() {
     familyNotes: {},
     applicationTasks: {},
     lexileTests: [],
-    mapVocabulary: { quizHistory: [], mastered: {} },
+    mapVocabulary: { quizHistory: [], mastered: {}, favorites: {}, studyDays: {} },
     reviewDecisions: {},
     visitEvents: [],
     commuteSamples: structuredClone(defaultCommuteSamples),
@@ -1096,7 +1098,7 @@ function normalizeState(raw) {
     familyNotes: state.familyNotes && typeof state.familyNotes === "object" ? state.familyNotes : {},
     applicationTasks: state.applicationTasks && typeof state.applicationTasks === "object" ? state.applicationTasks : {},
     lexileTests: Array.isArray(state.lexileTests) ? state.lexileTests : fallback.lexileTests,
-    mapVocabulary: state.mapVocabulary && typeof state.mapVocabulary === "object" ? { ...fallback.mapVocabulary, ...state.mapVocabulary, quizHistory: Array.isArray(state.mapVocabulary.quizHistory) ? state.mapVocabulary.quizHistory : [], mastered: state.mapVocabulary.mastered && typeof state.mapVocabulary.mastered === "object" ? state.mapVocabulary.mastered : {} } : fallback.mapVocabulary,
+    mapVocabulary: state.mapVocabulary && typeof state.mapVocabulary === "object" ? { ...fallback.mapVocabulary, ...state.mapVocabulary, quizHistory: Array.isArray(state.mapVocabulary.quizHistory) ? state.mapVocabulary.quizHistory : [], mastered: state.mapVocabulary.mastered && typeof state.mapVocabulary.mastered === "object" ? state.mapVocabulary.mastered : {}, favorites: state.mapVocabulary.favorites && typeof state.mapVocabulary.favorites === "object" ? state.mapVocabulary.favorites : {}, studyDays: state.mapVocabulary.studyDays && typeof state.mapVocabulary.studyDays === "object" ? state.mapVocabulary.studyDays : {} } : fallback.mapVocabulary,
     reviewDecisions: state.reviewDecisions && typeof state.reviewDecisions === "object" ? state.reviewDecisions : {},
     visitEvents: Array.isArray(state.visitEvents) ? state.visitEvents.filter(event => event && event.id && event.date) : [],
     commuteSamples,
@@ -1205,10 +1207,18 @@ let mapVocabSubject = "language_usage";
 let mapQuizSession = null;
 function mapSubjectLabel(subject) { return ({ language_usage: "Language Usage", reading: "阅读", math: "数学" })[subject] || subject; }
 function mapVocabEntries() { return Array.isArray(window.MAP_VOCABULARY) ? window.MAP_VOCABULARY.filter(entry => entry.subject === mapVocabSubject) : []; }
+function mapTodayKey() { return new Date().toISOString().slice(0, 10); }
+function mapStudyDays() { return workspaceState.mapVocabulary?.studyDays || {}; }
+function mapRecordStudyDay() { workspaceState.mapVocabulary.studyDays[mapTodayKey()] = (workspaceState.mapVocabulary.studyDays[mapTodayKey()] || 0) + 1; }
+function mapStreak() { const days = Object.keys(mapStudyDays()).filter(day => mapStudyDays()[day] > 0).sort().reverse(); let streak = 0; let cursor = new Date(`${mapTodayKey()}T00:00:00`); for (const day of days) { const key = cursor.toISOString().slice(0, 10); if (day !== key) { if (streak === 0 && day === new Date(cursor.getTime() - 86400000).toISOString().slice(0, 10)) cursor = new Date(cursor.getTime() - 86400000); else break; } if (day === cursor.toISOString().slice(0, 10)) { streak += 1; cursor = new Date(cursor.getTime() - 86400000); } } return streak; }
+function mapToggleFavorite(id) { const favorites = workspaceState.mapVocabulary.favorites; if (favorites[id]) delete favorites[id]; else favorites[id] = new Date().toISOString(); persistState(favorites[id] ? "词条已收藏" : "词条已取消收藏"); renderMapVocabulary(); }
 function mapFilteredEntries() {
   const level = document.getElementById("mapVocabLevel")?.value || "all";
+  const status = document.getElementById("mapVocabStatus")?.value || "all";
   const query = (document.getElementById("mapVocabSearch")?.value || "").trim().toLocaleLowerCase();
-  return mapVocabEntries().filter(entry => (level === "all" || entry.level === level) && (!query || `${entry.term} ${entry.meaning} ${entry.context}`.toLocaleLowerCase().includes(query)));
+  const mastered = workspaceState.mapVocabulary?.mastered || {};
+  const favorites = workspaceState.mapVocabulary?.favorites || {};
+  return mapVocabEntries().filter(entry => (level === "all" || entry.level === level) && (status === "all" || (status === "favorites" && favorites[entry.id]) || (status === "mastered" && mastered[entry.id]) || (status === "review" && !mastered[entry.id])) && (!query || `${entry.term} ${entry.meaning} ${entry.context}`.toLocaleLowerCase().includes(query)));
 }
 function renderMapVocabulary() {
   const list = document.getElementById("mapVocabList");
@@ -1218,8 +1228,9 @@ function renderMapVocabulary() {
   const all = mapVocabEntries();
   const mastered = workspaceState.mapVocabulary?.mastered || {};
   const masteredCount = all.filter(entry => mastered[entry.id]).length;
-  stats.textContent = `${all.length} 个词条 · 已掌握 ${masteredCount}`;
-  list.innerHTML = entries.length ? entries.slice(0, 80).map(entry => `<article class="map-vocab-card"><div class="map-vocab-card-head"><div><h3>${escapeHtml(entry.term)} <small>${escapeHtml(entry.meaning)}</small></h3><p>${escapeHtml(entry.group)} · ${entry.level === "core" ? "核心" : "进阶"}</p></div><span class="tag">${mastered[entry.id] ? "已掌握" : "待复习"}</span></div><p class="map-vocab-context">${escapeHtml(entry.context)}</p></article>`).join("") : `<div class="unknown">没有找到匹配词条。</div>`;
+  const favorites = workspaceState.mapVocabulary?.favorites || {};
+  stats.textContent = `${all.length} 个词条 · 已掌握 ${masteredCount} · 收藏 ${Object.keys(favorites).filter(id => all.some(entry => entry.id === id)).length}`;
+  list.innerHTML = entries.length ? entries.slice(0, 80).map(entry => `<article class="map-vocab-card"><div class="map-vocab-card-head"><div><h3>${escapeHtml(entry.term)} <small>${escapeHtml(entry.meaning)}</small></h3><p>${escapeHtml(entry.group)} · ${entry.level === "core" ? "核心" : "进阶"}</p></div><span class="tag">${mastered[entry.id] ? "已掌握" : "待复习"}</span></div><p class="map-vocab-context">${escapeHtml(entry.context)}</p><div class="map-vocab-card-actions"><button class="btn btn-soft" type="button" data-favorite-vocab="${escapeHtml(entry.id)}">${favorites[entry.id] ? "★ 已收藏" : "☆ 收藏"}</button><button class="btn btn-soft" type="button" data-flash-vocab="${escapeHtml(entry.id)}">闪卡</button></div></article>`).join("") : `<div class="unknown">没有找到匹配词条。</div>`;
   if (entries.length > 80) list.insertAdjacentHTML("beforeend", `<div class="metric-note">当前展示前 80 个匹配词条，请继续缩小搜索范围。</div>`);
 }
 function mapQuizPrompt(entry, direction) { return direction === "chinese_to_english" ? entry.meaning : entry.term; }
@@ -1227,6 +1238,35 @@ function mapQuizTargetLabel(direction) { return direction === "chinese_to_englis
 function mapMistakeEntries() {
   const ids = new Set((workspaceState.mapVocabulary?.quizHistory || []).flatMap(item => (item.mistakes || []).map(mistake => mistake.entryId)));
   return mapVocabEntries().filter(entry => ids.has(entry.id));
+}
+let mapFlashcardSession = null;
+function startMapFlashcards(seedId = "") {
+  const pool = mapFilteredEntries();
+  if (!pool.length) { showToast("当前筛选没有可学习的词条"); return; }
+  const ordered = seedId ? [pool.find(entry => entry.id === seedId), ...pool.filter(entry => entry.id !== seedId)] : pool.slice().sort(() => Math.random() - 0.5);
+  mapFlashcardSession = { entries: ordered.filter(Boolean), index: 0, revealed: false };
+  document.getElementById("mapVocabList").classList.add("hidden");
+  document.getElementById("mapQuizArea").classList.add("hidden");
+  renderMapFlashcard();
+}
+function renderMapFlashcard() {
+  const area = document.getElementById("mapFlashcardArea");
+  if (!area || !mapFlashcardSession) return;
+  area.classList.remove("hidden");
+  const session = mapFlashcardSession;
+  const entry = session.entries[session.index];
+  if (!entry) { area.innerHTML = `<div class="map-streak-banner"><strong>本轮闪卡完成！</strong><p>今天已完成 ${session.entries.length} 张闪卡，继续保持。</p><button id="mapFlashcardDone" class="btn btn-primary">返回词库</button></div>`; return; }
+  area.innerHTML = `<div class="map-quiz-progress"><span>闪卡 ${session.index + 1} / ${session.entries.length}</span><span>${escapeHtml(mapSubjectLabel(entry.subject))}</span></div><div class="map-flashcard-face"><div><strong>${escapeHtml(entry.term)}</strong>${session.revealed ? `<p>${escapeHtml(entry.meaning)}</p><p class="map-vocab-context">${escapeHtml(entry.context)}</p>` : `<p>先在心里说出中文含义，再点击“显示答案”。</p>`}</div></div><div class="map-flashcard-actions">${session.revealed ? `<button class="btn btn-primary" data-flash-result="known">记住了</button><button class="btn btn-soft" data-flash-result="review">再复习</button>` : `<button class="btn btn-primary" id="mapFlashReveal">显示答案</button>`}<button class="btn btn-soft" id="mapFlashExit">退出闪卡</button></div>`;
+}
+function finishMapFlashcardStep(result) {
+  const entry = mapFlashcardSession.entries[mapFlashcardSession.index];
+  if (result === "known") workspaceState.mapVocabulary.mastered[entry.id] = new Date().toISOString();
+  else delete workspaceState.mapVocabulary.mastered[entry.id];
+  mapRecordStudyDay();
+  mapFlashcardSession.index += 1;
+  mapFlashcardSession.revealed = false;
+  persistState("闪卡学习进度已更新");
+  renderMapFlashcard();
 }
 function startMapQuiz(mode = "all") {
   const pool = mode === "mistakes" ? mapMistakeEntries() : mapFilteredEntries();
@@ -1284,8 +1324,12 @@ function renderMapLearningRecords() {
   const summaryTarget = document.getElementById("mapLearningSummary");
   if (!historyTarget || !summaryTarget) return;
   const history = workspaceState.mapVocabulary?.quizHistory || [];
-  const summaries = ["language_usage", "reading", "math"].map(subject => { const rows = history.filter(item => item.subject === subject); const total = rows.reduce((sum, item) => sum + Number(item.total || 0), 0); const score = rows.reduce((sum, item) => sum + Number(item.score || 0), 0); return `<div class="map-learning-card"><strong>${escapeHtml(mapSubjectLabel(subject))}</strong><span>${rows.length ? "已测 " + rows.length + " 次 · 平均正确率 " + (total ? Math.round(score / total * 100) : 0) + "%" : "还没有测试记录"}</span></div>`; });
-  summaryTarget.innerHTML = summaries.join("");
+  const studyDays = Object.keys(mapStudyDays()).filter(day => mapStudyDays()[day] > 0);
+  const streak = mapStreak();
+  const badges = [{ label: "第一步", unlocked: studyDays.length >= 1 }, { label: "连续 3 天", unlocked: streak >= 3 }, { label: "连续 7 天", unlocked: streak >= 7 }, { label: "完成 50 词", unlocked: Object.keys(workspaceState.mapVocabulary?.mastered || {}).length >= 50 }, { label: "三科都练过", unlocked: ["language_usage", "reading", "math"].every(subject => history.some(item => item.subject === subject)) }];
+  const summaries = ["language_usage", "reading", "math"].map(subject => { const rows = history.filter(item => item.subject === subject); const total = rows.reduce((sum, item) => sum + Number(item.total || 0), 0); const score = rows.reduce((sum, item) => sum + Number(item.score || 0), 0); const accuracy = total ? Math.round(score / total * 100) : 0; return `<div class="map-learning-card"><strong>${escapeHtml(mapSubjectLabel(subject))}</strong><span>${rows.length ? "已测 " + rows.length + " 次 · 平均正确率 " + accuracy + "%" : "还没有测试记录"}</span></div>`; });
+  const chart = ["language_usage", "reading", "math"].map(subject => { const rows = history.filter(item => item.subject === subject); const total = rows.reduce((sum, item) => sum + Number(item.total || 0), 0); const score = rows.reduce((sum, item) => sum + Number(item.score || 0), 0); const percent = total ? Math.round(score / total * 100) : 0; return `<div class="map-progress-row"><span>${escapeHtml(mapSubjectLabel(subject))}</span><div class="map-progress-track"><div class="map-progress-fill" style="width:${percent}%"></div></div><strong>${percent}%</strong></div>`; }).join("");
+  summaryTarget.innerHTML = `<div class="map-streak-banner"><strong>🔥 连续学习 ${streak} 天</strong><p>累计学习 ${studyDays.length} 天。每天完成一小组，进步会更稳。</p><div class="map-badge-list">${badges.map(badge => `<span class="map-badge${badge.unlocked ? "" : " locked"}">${badge.unlocked ? "🏅" : "🔒"} ${badge.label}</span>`).join("")}</div></div><div class="map-learning-summary">${summaries.join("")}</div><div class="map-learning-card"><strong>学科进步图表</strong><span>按已完成词汇测试的累计正确率计算</span><div class="map-progress-chart">${chart}</div></div>`;
   historyTarget.innerHTML = history.length ? history.slice(0, 20).map(item => `<div class="sample-item"><span>${escapeHtml(mapSubjectLabel(item.subject))} · ${escapeHtml(formatDateTime(item.completedAt))} · 错题 ${item.mistakes?.length || 0}</span><strong>${item.score}/${item.total}</strong></div>`).join("") : `<div class="unknown">还没有词汇测试记录，完成一次测试后会显示在这里。</div>`;
 }
 function switchMapSubview(view) {
@@ -2258,9 +2302,13 @@ function init() {
   document.querySelectorAll("[data-vocab-subject]").forEach(button => button.addEventListener("click", () => { mapVocabSubject = button.dataset.vocabSubject; document.querySelectorAll("[data-vocab-subject]").forEach(item => item.classList.toggle("active", item === button)); renderMapVocabulary(); }));
   document.getElementById("mapVocabSearch")?.addEventListener("input", renderMapVocabulary);
   document.getElementById("mapVocabLevel")?.addEventListener("change", renderMapVocabulary);
+  document.getElementById("mapVocabStatus")?.addEventListener("change", renderMapVocabulary);
+  document.getElementById("mapVocabList")?.addEventListener("click", event => { const favorite = event.target.closest("[data-favorite-vocab]"); if (favorite) mapToggleFavorite(favorite.dataset.favoriteVocab); const flash = event.target.closest("[data-flash-vocab]"); if (flash) startMapFlashcards(flash.dataset.flashVocab); });
   document.getElementById("mapBrowseBtn")?.addEventListener("click", () => { document.getElementById("mapQuizArea")?.classList.add("hidden"); document.getElementById("mapVocabList")?.classList.remove("hidden"); renderMapVocabulary(); });
   document.getElementById("mapStartQuiz")?.addEventListener("click", () => startMapQuiz());
   document.getElementById("mapWrongQuiz")?.addEventListener("click", () => { if (!mapMistakeEntries().length) { showToast("还没有错题，先完成一次测试吧"); return; } startMapQuiz("mistakes"); });
+  document.getElementById("mapFlashcardBtn")?.addEventListener("click", () => startMapFlashcards());
+  document.getElementById("mapFlashcardArea")?.addEventListener("click", event => { if (event.target.closest("#mapFlashReveal")) { mapFlashcardSession.revealed = true; renderMapFlashcard(); } if (event.target.closest("[data-flash-result]")) finishMapFlashcardStep(event.target.closest("[data-flash-result]").dataset.flashResult); if (event.target.closest("#mapFlashExit") || event.target.closest("#mapFlashcardDone")) { mapFlashcardSession = null; event.currentTarget.classList.add("hidden"); document.getElementById("mapVocabList")?.classList.remove("hidden"); renderMapVocabulary(); } });
   document.getElementById("mapQuizArea")?.addEventListener("submit", submitMapQuizAnswer);
   document.getElementById("mapQuizArea")?.addEventListener("click", event => { if (event.target.closest("#mapQuizExit")) { mapQuizSession = null; event.currentTarget.classList.add("hidden"); document.getElementById("mapVocabList")?.classList.remove("hidden"); } if (event.target.closest("#mapRetryQuiz")) startMapQuiz(); if (event.target.closest("#mapBackToVocab")) { mapQuizSession = null; event.currentTarget.classList.add("hidden"); document.getElementById("mapVocabList")?.classList.remove("hidden"); renderMapVocabulary(); } });
   document.getElementById("newVisitBtn").addEventListener("click", () => openVisitModal());
