@@ -7,8 +7,10 @@
       .replace(/\s+/g, " ")
       .trim();
   }
-  function isCorrect(userAnswer, entry) {
-    const accepted = [entry.answer, ...(entry.aliases || [])].map(normalizeAnswer).filter(Boolean);
+  function isCorrect(userAnswer, entry, direction = "english_to_chinese") {
+    const primary = direction === "chinese_to_english" ? entry.answer : entry.meaning;
+    const aliases = direction === "chinese_to_english" ? (entry.aliases || []) : (entry.meaningAliases || []);
+    const accepted = [primary, ...aliases].map(normalizeAnswer).filter(Boolean);
     return accepted.includes(normalizeAnswer(userAnswer));
   }
   function errorAnalysis(entry) {

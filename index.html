@@ -802,7 +802,7 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
       <div class="map-vocab-toolbar">
         <div class="subnav map-vocab-subnav" aria-label="词库学科"><button class="active" data-vocab-subject="language_usage">Language Usage</button><button data-vocab-subject="reading">Reading</button><button data-vocab-subject="math">Math</button></div>
         <div class="form-grid map-vocab-filters"><div class="field"><label for="mapVocabSearch">搜索词条</label><input id="mapVocabSearch" placeholder="输入英文或中文关键词"></div><div class="field"><label for="mapVocabLevel">难度</label><select id="mapVocabLevel"><option value="all">全部词条</option><option value="core">核心词条</option><option value="advanced">自适应进阶</option></select></div><div class="field"><label for="mapQuizSize">测试题数</label><select id="mapQuizSize"><option value="10">10 题</option><option value="20">20 题</option></select></div><div class="field"><label for="mapQuizDirection">答题方向</label><select id="mapQuizDirection"><option value="english_to_chinese">英文 → 中文</option><option value="chinese_to_english">中文 → 英文</option><option value="mixed">中英混合</option></select></div></div>
-        <div class="inline-actions"><button id="mapBrowseBtn" class="btn btn-soft">浏览词库</button><button id="mapStartQuiz" class="btn btn-primary">开始词汇测试</button></div>
+        <div class="inline-actions"><button id="mapBrowseBtn" class="btn btn-soft">浏览词库</button><button id="mapStartQuiz" class="btn btn-primary">开始词汇测试</button><button id="mapWrongQuiz" class="btn btn-soft">错题复习</button></div>
       </div>
       <div id="mapVocabList" class="map-vocab-list"></div>
       <div id="mapQuizArea" class="map-quiz-area hidden"></div>
@@ -1224,8 +1224,12 @@ function renderMapVocabulary() {
 }
 function mapQuizPrompt(entry, direction) { return direction === "chinese_to_english" ? entry.meaning : entry.term; }
 function mapQuizTargetLabel(direction) { return direction === "chinese_to_english" ? "请填写英文词条" : "请填写中文含义"; }
-function startMapQuiz() {
-  const pool = mapFilteredEntries();
+function mapMistakeEntries() {
+  const ids = new Set((workspaceState.mapVocabulary?.quizHistory || []).flatMap(item => (item.mistakes || []).map(mistake => mistake.entryId)));
+  return mapVocabEntries().filter(entry => ids.has(entry.id));
+}
+function startMapQuiz(mode = "all") {
+  const pool = mode === "mistakes" ? mapMistakeEntries() : mapFilteredEntries();
   if (!pool.length) { showToast("当前筛选没有可测试的词条"); return; }
   const size = Math.min(Number(document.getElementById("mapQuizSize")?.value || 10), pool.length);
   const direction = document.getElementById("mapQuizDirection")?.value || "english_to_chinese";
@@ -1253,8 +1257,10 @@ function submitMapQuizAnswer(event) {
   if (!mapQuizSession) return;
   const entry = mapQuizSession.questions[mapQuizSession.index];
   const userAnswer = document.getElementById("mapQuizAnswer").value.trim();
-  const correct = MapQuizCore.isCorrect(userAnswer, entry);
-  mapQuizSession.answers.push({ entry, userAnswer, correct, direction: mapQuizSession.currentDirection });
+  const direction = mapQuizSession.currentDirection;
+  const expectedAnswer = direction === "chinese_to_english" ? entry.answer : entry.meaning;
+  const correct = MapQuizCore.isCorrect(userAnswer, entry, direction);
+  mapQuizSession.answers.push({ entry, userAnswer, expectedAnswer, correct, direction });
   if (correct) { workspaceState.mapVocabulary.mastered[entry.id] = new Date().toISOString(); showToast("答对了！继续保持这个节奏"); }
   mapQuizSession.index += 1;
   renderMapQuiz();
@@ -1263,7 +1269,7 @@ function finishMapQuiz() {
   const session = mapQuizSession;
   const total = session.questions.length;
   const score = session.answers.filter(answer => answer.correct).length;
-  const mistakes = session.answers.filter(answer => !answer.correct).map(answer => ({ entryId: answer.entry.id, userAnswer: answer.userAnswer, correctAnswer: answer.entry.answer, meaning: answer.entry.meaning, context: answer.entry.context, analysis: MapQuizCore.errorAnalysis(answer.entry) }));
+  const mistakes = session.answers.filter(answer => !answer.correct).map(answer => ({ entryId: answer.entry.id, userAnswer: answer.userAnswer, correctAnswer: answer.expectedAnswer, meaning: answer.entry.meaning, context: answer.entry.context, analysis: MapQuizCore.errorAnalysis(answer.entry) }));
   const result = { id: `map-quiz-${Date.now()}`, subject: session.subject, direction: session.direction, score, total, accuracy: total ? Math.round(score / total * 100) : 0, mistakes, completedAt: new Date().toISOString() };
   workspaceState.mapVocabulary.quizHistory = [result, ...(workspaceState.mapVocabulary.quizHistory || [])].slice(0, 50);
   persistState("MAP 词汇测试已完成");
@@ -2253,7 +2259,8 @@ function init() {
   document.getElementById("mapVocabSearch")?.addEventListener("input", renderMapVocabulary);
   document.getElementById("mapVocabLevel")?.addEventListener("change", renderMapVocabulary);
   document.getElementById("mapBrowseBtn")?.addEventListener("click", () => { document.getElementById("mapQuizArea")?.classList.add("hidden"); document.getElementById("mapVocabList")?.classList.remove("hidden"); renderMapVocabulary(); });
-  document.getElementById("mapStartQuiz")?.addEventListener("click", startMapQuiz);
+  document.getElementById("mapStartQuiz")?.addEventListener("click", () => startMapQuiz());
+  document.getElementById("mapWrongQuiz")?.addEventListener("click", () => { if (!mapMistakeEntries().length) { showToast("还没有错题，先完成一次测试吧"); return; } startMapQuiz("mistakes"); });
   document.getElementById("mapQuizArea")?.addEventListener("submit", submitMapQuizAnswer);
   document.getElementById("mapQuizArea")?.addEventListener("click", event => { if (event.target.closest("#mapQuizExit")) { mapQuizSession = null; event.currentTarget.classList.add("hidden"); document.getElementById("mapVocabList")?.classList.remove("hidden"); } if (event.target.closest("#mapRetryQuiz")) startMapQuiz(); if (event.target.closest("#mapBackToVocab")) { mapQuizSession = null; event.currentTarget.classList.add("hidden"); document.getElementById("mapVocabList")?.classList.remove("hidden"); renderMapVocabulary(); } });
   document.getElementById("newVisitBtn").addEventListener("click", () => openVisitModal());
