@@ -296,3 +296,95 @@ Create an image that expresses the vocabulary concept “[English term]” throu
 - [ ] 手机小尺寸下主体仍然清楚。
 - [ ] 与同一学科其他图片保持统一风格。
 - [ ] 抽象概念使用了关系、因果、顺序或对比表达。
+
+## 12. 抽象词提示词 V2：教学型构图
+
+第一版图片偏重叙事氛围。对于语法、阅读策略和数学关系词，第二版统一改用“教学型构图”：减少装饰背景，增加重复物体、分格、对比、箭头和关系高亮。
+
+将以下内容追加到所有抽象词提示词中：
+
+```text
+Use a clear instructional visual structure rather than a decorative story scene. Make the concept immediately understandable through a three-panel sequence, side-by-side comparison, arrows, highlighted relationships, or repeated identical objects. Keep the background simple and remove any detail that does not directly support the vocabulary meaning.
+
+The image should communicate the concept within two seconds at mobile flashcard size. Use one visual anchor, strong contrast, clear spatial separation, and a simple cause-or-relation structure. Do not rely only on facial expressions or atmosphere.
+```
+
+抽象词追加负面提示词：
+
+```text
+Avoid ambiguous storytelling, overly cinematic composition, excessive background detail, symbolic imagery that requires guessing, multiple unrelated actions, decorative props, and scenes where the vocabulary meaning is not immediately obvious.
+```
+
+### 12.1 五种教学型构图
+
+| 构图 | 适用词条 | 必须出现的视觉结构 |
+|---|---|---|
+| 三格连续图 | tense、sequence、cause/effect、problem/solution | 同一角色或同一物体连续变化，前后关系清楚 |
+| 左右对比图 | adjective、compare、contrast、area/perimeter | 两边尽量使用相同对象，只改变目标变量 |
+| 关系图 | preposition、subject/object、evidence、inference | 箭头、位置、线索或指向关系清楚 |
+| 连接图 | conjunction、clause、sentence parts | 两个独立部分，中间有明确连接结构 |
+| 结构图示 | equation、variable、fraction、coordinate、graph | 天平、网格、数轴、色块或方格承担教学功能 |
+
+### 12.2 重点抽象词的修改规则
+
+- noun：改为四格概念图，分别表达人物、地点、物品、想法，不再使用复杂图书馆场景。
+- verb：改为同一人物的三步连续动作，突出动作发生和对象变化。
+- preposition：使用完全相同的物体，在不同位置进行三格对比。
+- conjunction：左右两个独立场景，中间用桥或连接带连接，不能只画“合作”。
+- tense：同一人物的过去、现在、未来三格，使用环境变化表达时间。
+- subject / object：用清晰动作箭头表达谁发出动作、谁接受动作。
+- inference：线索区 → 思考区 → 结论区，结论不能直接出现在第一格。
+- evidence：多个具体线索共同指向一个结论，线索和结论要有明显支撑关系。
+- main idea：中心主题在中间，多个细节围绕它排列。
+- cause / effect：左侧原因、中间变化、右侧结果，顺序固定。
+- author’s purpose：三格对比 inform、persuade、entertain 的不同表达目的。
+- fraction：同一个整体切分成等份，只高亮其中一部分。
+- equation：使用两边平衡的天平，不用复杂背景替代等式关系。
+- variable：使用神秘盒子代表未知数量，并与已知物体保持平衡。
+- area / perimeter：同一个图形，一边沿外框走，一边铺满内部方格。
+
+### 12.3 闪卡界面承担的内容
+
+图片不再承担全部解释。图片只负责让孩子形成直觉理解；闪卡背面继续显示：
+
+1. English 单词
+2. 中文含义
+3. 一句简明解释
+4. 原词库中的英文语境
+5. “图中线索”说明
+
+这样可以避免为了让图片自解释而加入大量文字，也能降低图像生成模型产生错误文字的风险。
+
+## 12. 执行计划
+
+这份提示词规范的执行方式按“先验证、再分批、再回填”的顺序进行。
+
+1. 先做试跑。
+   - 每个 subject 先抽 5 到 10 条，覆盖不同 `visualType` 和不同抽象程度。
+   - 试跑时重点检查文字污染、主体清晰度、年龄感、风格一致性和构图稳定性。
+   - 试跑结果不达标时，只调整一个变量，再试一次。
+
+2. 再按批次生成。
+   - 批次建议按 subject 切分，避免同一批里风格上下波动过大。
+   - 同一批内优先生成高频、具象、容易理解的词条，再处理抽象词。
+   - 每批完成后先做人工检查，再进入下一批。
+
+3. 每条词条都要回填状态。
+   - `planned`：已纳入待生成队列。
+   - `generated`：图片已产出，等待检查。
+   - `reviewed`：图片通过检查，可以进入后续流程。
+   - `blocked`：当前词条存在问题，暂时不能继续。
+
+4. 失败时只改最小必要项。
+   - 文字混入：先加重“无文字”约束，不要先改主题。
+   - 主体不清：先改构图或主体数量，不要同时改风格和背景。
+   - 过于幼态：先收紧年龄感和角色比例，不要先换整个画风。
+   - 抽象词太空泛：优先改成关系图、对比图或连续漫画。
+
+5. 统一输出命名。
+   - 文件名与词条 `id` 一一对应。
+   - 目录按 subject 分层保存，便于批量检查和回填。
+
+6. 验收通过后再继续下一批。
+   - 只有当前批次通过人工验收，才开始下一批。
+   - 如果批次里出现系统性问题，先修正规则，再继续后面的词条。
