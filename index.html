@@ -102,6 +102,26 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
  .map-quiz-illustration{min-height:220px;box-shadow:inset 0 0 0 1px rgba(20,32,25,.05)}.map-quiz-illustration-image{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:left center}.map-quiz-illustration::before,.map-quiz-illustration::after{display:none}.map-quiz-pencil,.map-quiz-spark{display:none}
  .map-quiz-intro{position:relative;display:block;min-height:390px;overflow:hidden;padding:0;background:#fffdf7}.map-quiz-intro .map-quiz-illustration{position:absolute;inset:0;min-height:0;border-radius:14px;background:transparent}.map-quiz-illustration-image{object-position:center center}.map-quiz-intro-copy{position:relative;z-index:1;width:min(48%,390px);min-height:390px;margin-left:auto;padding:58px 28px 30px 10px;display:grid;align-content:center;gap:8px}.map-quiz-intro-copy h3{font-size:28px;text-shadow:0 1px 8px rgba(255,253,247,.65)}.map-quiz-intro-copy p{color:var(--text-2);text-shadow:0 1px 7px rgba(255,253,247,.9)}.map-quiz-intro-copy .btn{width:max-content;margin-top:8px}@media(max-width:759px){.map-quiz-intro{min-height:360px}.map-quiz-intro-copy{width:57%;min-height:360px;padding:42px 16px 24px 4px}.map-quiz-intro-copy h3{font-size:23px}.map-quiz-intro-copy p{font-size:12px}}
  </style>
+<style>
+/* Vocabulary type scale: keep the card and flashcard terms visually identical. */
+#view-map{--map-vocab-term-size:28px}
+#view-map .map-vocab-card h3{font-size:var(--map-vocab-term-size);line-height:1.2;font-weight:800}
+#view-map .map-vocab-card h3 small{font-size:18px;line-height:1.35;font-weight:650}
+#view-map .map-vocab-card p{font-size:16px;line-height:1.6}
+#view-map .map-flashcard-face strong{font-size:var(--map-vocab-term-size);line-height:1.2}
+#view-map .map-flashcard-face p{font-size:18px;line-height:1.55}
+#view-map .map-quiz-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:4px 0 2px}
+#view-map .map-quiz-settings .field{display:grid;gap:5px}
+#view-map .map-quiz-settings label{font-size:13px;font-weight:750;color:var(--text-2)}
+#view-map .map-quiz-settings select{min-height:44px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--text);font:inherit;font-size:14px}
+@media(max-width:759px){
+  #view-map{--map-vocab-term-size:24px}
+  #view-map .map-vocab-card h3 small{font-size:17px}
+  #view-map .map-vocab-card p{font-size:15px}
+  #view-map .map-flashcard-face p{font-size:17px}
+  #view-map .map-quiz-settings{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body class="access-locked">
 <div id="accessGate" class="access-gate" role="dialog" aria-modal="true" aria-labelledby="accessGateTitle">
@@ -805,7 +825,7 @@ main{width:min(1180px,100%);margin:0 auto;padding:18px 14px calc(86px + var(--sa
       <div class="section-head"><div><h2>MAP 词汇库 · G5–G6</h2><p>来自三份学习词库，共 680 个词条；先浏览，再用短测检验记忆。</p></div><span id="mapVocabularyStats" class="compare-status">正在加载</span></div>
       <div class="map-vocab-toolbar">
         <div class="subnav map-vocab-subnav" aria-label="词库学科"><button class="active" data-vocab-subject="language_usage">Language Usage</button><button data-vocab-subject="reading">Reading</button><button data-vocab-subject="math">Math</button></div>
-        <div class="form-grid map-vocab-filters"><div class="field"><label for="mapVocabSearch">搜索词条</label><input id="mapVocabSearch" placeholder="输入英文或中文关键词"></div><div class="field"><label for="mapVocabLevel">难度</label><select id="mapVocabLevel"><option value="all">全部词条</option><option value="core">核心词条</option><option value="advanced">自适应进阶</option></select></div><div class="field"><label for="mapVocabStatus">状态</label><select id="mapVocabStatus"><option value="all">全部状态</option><option value="favorites">我的收藏</option><option value="mastered">已掌握</option><option value="review">待复习</option></select></div><div class="field"><label for="mapQuizSize">测试题数</label><select id="mapQuizSize"><option value="10">10 题</option><option value="20">20 题</option></select></div><div class="field"><label for="mapQuizDirection">答题方向</label><select id="mapQuizDirection"><option value="english_to_chinese">英文 → 中文</option><option value="chinese_to_english">中文 → 英文</option><option value="mixed">中英混合</option></select></div></div>
+        <div class="form-grid map-vocab-filters"><div class="field"><label for="mapVocabSearch">搜索词条</label><input id="mapVocabSearch" placeholder="输入英文或中文关键词"></div><div class="field"><label for="mapVocabLevel">难度</label><select id="mapVocabLevel"><option value="all">全部词条</option><option value="core">核心词条</option><option value="advanced">自适应进阶</option></select></div><div class="field"><label for="mapVocabStatus">状态</label><select id="mapVocabStatus"><option value="all">全部状态</option><option value="favorites">我的收藏</option><option value="mastered">已掌握</option><option value="review">待复习</option></select></div></div>
         <div class="inline-actions"><button id="mapBrowseBtn" class="btn btn-soft">浏览词库</button></div>
       </div>
       <div id="mapVocabList" class="map-vocab-list"></div>
@@ -1285,8 +1305,16 @@ function renderMapQuizIntro(mode = "all") {
   const isMistakes = mode === "mistakes";
   const hasMistakes = mapMistakeEntries().length > 0;
   const illustrationPath = isMistakes ? "assets/map-quiz-review-intro.png" : "assets/map-quiz-intro.png";
+  const savedQuizSize = document.getElementById("mapQuizSize")?.value || "10";
+  const savedQuizDirection = document.getElementById("mapQuizDirection")?.value || "english_to_chinese";
+  document.getElementById("mapQuizSize")?.closest(".field")?.remove();
+  document.getElementById("mapQuizDirection")?.closest(".field")?.remove();
   area.classList.remove("hidden");
   area.innerHTML = `<div class="map-quiz-intro"><div class="map-quiz-illustration"><img class="map-quiz-illustration-image" src="${illustrationPath}" alt="" loading="lazy"><span class="map-quiz-pencil"></span><span class="map-quiz-spark"></span></div><div class="map-quiz-intro-copy"><span class="map-quiz-intro-label">${isMistakes ? "错题复习" : "词汇测试"}</span><h3>${isMistakes ? "把容易混淆的词，再练一遍" : "准备好开始词汇挑战了吗？"}</h3><p>${isMistakes ? (hasMistakes ? "集中复习之前答错的词条，巩固记忆后再回到词库。" : "完成一次词汇测试后，这里会自动收集需要复习的词条。") : "先看清英文词条，再填写中文含义。按自己的节奏完成，不需要一次做完。"}</p><button id="mapBeginQuiz" class="btn btn-primary" type="button" data-quiz-mode="${mode}"${isMistakes && !hasMistakes ? " disabled" : ""}>${isMistakes && !hasMistakes ? "暂无错题" : "开始测试"}</button></div></div>`;
+  const settings = document.createElement("div");
+  settings.className = "map-quiz-settings";
+  settings.innerHTML = `<div class="field"><label for="mapQuizSize">测试题数</label><select id="mapQuizSize"><option value="10"${savedQuizSize === "10" ? " selected" : ""}>10 题</option><option value="20"${savedQuizSize === "20" ? " selected" : ""}>20 题</option></select></div><div class="field"><label for="mapQuizDirection">答题方向</label><select id="mapQuizDirection"><option value="english_to_chinese"${savedQuizDirection === "english_to_chinese" ? " selected" : ""}>英文 → 中文</option><option value="chinese_to_english"${savedQuizDirection === "chinese_to_english" ? " selected" : ""}>中文 → 英文</option><option value="mixed"${savedQuizDirection === "mixed" ? " selected" : ""}>中英混合</option></select></div>`;
+  area.querySelector(".map-quiz-intro-copy")?.insertBefore(settings, area.querySelector("#mapBeginQuiz"));
 }
 function startMapQuiz(mode = "all") {
   const pool = mode === "mistakes" ? mapMistakeEntries() : mapFilteredEntries();
