@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="国际学校择校工具：为北京家庭整理学校、对比、申请进度与通勤信息">
-<meta name="app-version" content="20261016-1">
+<meta name="app-version" content="20261017-1">
 <meta name="theme-color" content="#f7f8f5">
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -1532,15 +1532,27 @@ if (Array.isArray(window.MAP_VOCABULARY)) {
 /* Generated from official-school research checked on 2026-10-15. */
 window.SCHOOL_VISIT_UPDATES = {
   "this": {
-    "status": "暂无可确认的未来开放日；可联系招生办安排单独校园参观",
-    "summary": "官网招生概况称清华附中国际部通常每年3月和11月举办开放日，邀请函会在活动前1至2周通过官方微信公众号发布；截至北京时间2026-10-15，官方OpenApply开放日页仅显示已过去的2026-10-14场次，未列出下一场。官网同时明确可由招生办安排单独校园参观。G6属于官网所列Middle School（Grade 6-8）。",
-    "events": [],
-    "bookingUrl": "https://www.this.edu.cn/zs/zsgk.htm",
-    "bookingMethod": "联系招生办预约单独校园参观：this@mail.tsinghua.edu.cn，010-62771477 / 010-62797000，或微信THIS-Admission；开放日关注官方微信公众号发布的邀请函。",
-    "sourceUrl": "https://www.this.edu.cn/zs/zsgk.htm",
-    "sourceLabel": "官网：招生概况与校园参观说明",
-    "checkedAt": "2026-10-15",
-    "verification": "booking_available"
+    "status": "2026年10月29日校园开放日，需扫码报名",
+    "summary": "用户提供的 THIS 校园开放日海报载明：2026年10月29日（周四）08:30–12:30，在北京市海淀区中关村北大街清华附中校园举行。面向1–11年级申请家庭，包含G6；外籍及中国香港、澳门、台湾地区学生的具体申请证件与身份资格须向招生办确认。公开活动不代表家庭已报名。",
+    "events": [
+      {
+        "date": "2026-10-29",
+        "startTime": "08:30",
+        "endTime": "12:30",
+        "title": "THIS 校园开放日",
+        "audience": "1–11年级申请家庭（含G6）；身份资格以招生办审核为准",
+        "detail": "地点：北京市海淀区中关村北大街清华附中校园。扫描活动海报左下方“开放日报名”二维码预约。海报招生说明：1–11年级外籍或中国香港、澳门、台湾地区学生可申请；外籍学生的有效中国签证等要求请向招生办确认。咨询：this@mail.tsinghua.edu.cn；010-62797000 / 010-62771477。",
+        "sourceUrl": "this-open-day-20261029.png"
+      }
+    ],
+    "bookingUrl": "this-open-day-20261029.png",
+    "bookingMethod": "打开活动海报，扫描左下方“开放日报名 / Open Day Sign-up”二维码；中间、右侧分别为招生小助手和官方微信公众号。咨询邮箱 this@mail.tsinghua.edu.cn，电话 010-62797000 / 010-62771477。",
+    "sourceUrl": "this-open-day-20261029.png",
+    "sourceLabel": "用户提供：THIS 校园开放日海报（2026-10-29）",
+    "checkedAt": "2026-10-17",
+    "verification": "provided_poster",
+    "qrImage": "this-open-day-20261029.png",
+    "qrAlt": "THIS 2026年10月29日08:30–12:30校园开放日海报，左下方为报名二维码"
   },
   "wab": {
     "status": "已确认两场适合 G6 家庭的中学活动，可在线预约",
@@ -2078,7 +2090,7 @@ schools.forEach(school => {
   if (officialVisitUpdate) school.visitDays = officialVisitUpdate;
 });
 const studentProfile = {"name":"格格","nickname":"格格","currentSchool":"史家小学分校","currentGrade":"2026年9月进入国内小学五年级","targetEntry":"2027年秋季","targetGrade":"G6","targetStage":"G9 美国高中","acceptedCurricula":["美式课程","IB MYP后衔接美式高中或AP"],"english":{},"personality":{},"familyConstraints":{}};
-const APP_VERSION = "0.7.1";
+const APP_VERSION = "0.7.2";
 const defaultSelected = ["this", "wab", "isb"];
 const defaultCommuteSamples = {
   this: [{ schoolId: "this", originLabel: "清华大学附属中学国际部校址附近", destinationLabel: "工作地点", mode: "driving", durationMinutes: 30, distanceMeters: null, sampledAt: "2026-08-07T16:00:00+08:00", provider: "amap", sampleContext: "school_area_to_qinghe", sourceStatus: "provider_result", recordedBy: "web_baseline" }, { schoolId: "this", originLabel: "清华大学附属中学国际部校址附近", destinationLabel: "工作地点", mode: "transit", durationMinutes: 60, distanceMeters: null, sampledAt: "2026-08-07T16:30:00+08:00", provider: "amap", sampleContext: "school_area_to_qinghe", sourceStatus: "provider_result", recordedBy: "web_baseline" }],
@@ -2756,6 +2768,7 @@ function renderAdmissionsContacts(school) {
 
 const visitVerificationLabels = {
   official_confirmed: "官方日期已确认",
+  provided_poster: "用户提供的学校活动海报",
   booking_available: "官网可预约 / 咨询",
   no_current_date: "官网未公布新日期",
   unreachable: "官网暂无法核验"
@@ -2776,9 +2789,9 @@ function renderVisitDays(school) {
     const when = [event.date || "日期待确认", time].filter(Boolean).join(" · ");
     return `<div class="visit-day-event"><time>${escapeHtml(when)}</time><div><strong>${escapeHtml(event.title || "访校活动")}</strong>${event.audience ? `<span>${escapeHtml(event.audience)}</span>` : ""}${event.detail ? `<span>${escapeHtml(event.detail)}</span>` : ""}</div></div>`;
   }).join("");
-  const qr = visit.qrImage ? `<div class="visit-day-qr"><img src="${escapeHtml(visit.qrImage)}" alt="${escapeHtml(visit.qrAlt || `${school.nameZh}访校预约二维码`)}" loading="lazy"><p>官网页面提供二维码预约入口。请以二维码对应页面的活动状态为准；历史活动二维码可能已经失效。</p></div>` : "";
+  const qr = visit.qrImage ? `<div class="visit-day-qr"><img src="${escapeHtml(visit.qrImage)}" alt="${escapeHtml(visit.qrAlt || `${school.nameZh}访校预约二维码`)}" loading="lazy"><p>扫描活动图片中的报名二维码预约。请以报名页面的活动状态为准；公开场次不代表已经报名。</p></div>` : "";
   const bookingMethod = visit.bookingMethod ? `<p class="visit-day-summary"><strong>预约方式：</strong>${escapeHtml(visit.bookingMethod)}</p>` : "";
-  return `<div class="visit-day-card"><span class="visit-day-status">${escapeHtml(verification)}</span><p class="visit-day-summary"><strong>${escapeHtml(visit.status)}</strong></p><p class="visit-day-summary">${escapeHtml(visit.summary)}</p>${events ? `<div class="visit-day-events">${events}</div>` : ""}${bookingMethod}${qr}<div class="visit-day-actions">${visit.bookingUrl ? `<a class="btn btn-primary" href="${escapeHtml(visit.bookingUrl)}" target="_blank" rel="noreferrer">打开官网预约 / 咨询</a>` : ""}</div><p class="visit-day-source">来源：<a href="${escapeHtml(visit.sourceUrl || school.officialUrl)}" target="_blank" rel="noreferrer">${escapeHtml(visit.sourceLabel || "学校官网")}</a> · 官网核验：${escapeHtml(visit.checkedAt || checkedDate(school))}</p></div>`;
+  return `<div class="visit-day-card"><span class="visit-day-status">${escapeHtml(verification)}</span><p class="visit-day-summary"><strong>${escapeHtml(visit.status)}</strong></p><p class="visit-day-summary">${escapeHtml(visit.summary)}</p>${events ? `<div class="visit-day-events">${events}</div>` : ""}${bookingMethod}${qr}<div class="visit-day-actions">${visit.bookingUrl ? `<a class="btn btn-primary" href="${escapeHtml(visit.bookingUrl)}" target="_blank" rel="noreferrer">打开官网预约 / 咨询</a>` : ""}</div><p class="visit-day-source">来源：<a href="${escapeHtml(visit.sourceUrl || school.officialUrl)}" target="_blank" rel="noreferrer">${escapeHtml(visit.sourceLabel || "学校官网")}</a> · 资料更新：${escapeHtml(visit.checkedAt || checkedDate(school))}</p></div>`;
 }
 
 function renderVisuals(school) {
