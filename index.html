@@ -1310,7 +1310,7 @@ main { padding: 26px 22px calc(90px + var(--safe-bottom)); }
     <div id="schoolVisitsPanel" class="section panel hidden"><div class="section-head"><div><h2>访校计划</h2><p>把学校官方开放日和家庭自己安排的访校日程放在同一份日历里。</p></div><button id="newVisitBtn" class="btn btn-primary">新建访校</button></div><div class="visit-toolbar"><div class="visit-toolbar-title" id="visitMonthLabel"></div><div class="visit-toolbar-actions"><button id="visitPrevMonth" class="btn" type="button" aria-label="上个月">‹</button><button id="visitToday" class="btn" type="button">今天</button><button id="visitNextMonth" class="btn" type="button" aria-label="下个月">›</button></div></div><div class="visit-calendar" aria-label="访校日历"><div class="visit-weekdays"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div><div id="visitCalendarGrid" class="visit-calendar-grid"></div></div><div id="visitSelectedDateLabel" class="visit-agenda-header" aria-live="polite"></div><div id="visitDayList" class="visit-day-list"></div><div class="visit-upcoming-panel"><h3>接下来的访校场次</h3><div id="visitUpcomingList" class="agenda-grid"></div></div><p class="visit-sync-note">日程会自动保存到家庭共享云空间，手机、电脑和家人的设备打开网站后会自动同步；云端暂时不可用时仍会保留本机记录。</p><div class="section panel" style="margin-top:16px"><div class="section-head"><div><h2>探校计划</h2><p>先安排秋季开放日，再用统一模板记录学校和孩子的反馈。</p></div></div><div class="action-card-grid"><div class="action-card"><strong>秋季探校 · 建立第一轮判断</strong><p>优先预约 THIS、WAB、ISB、BWYA 等主候选，重点观察 G6 课程、英语支持和学生状态。</p><button class="btn btn-soft" data-go="application">查看准备清单</button></div><div class="action-card"><strong>2026年10–11月 · 第二轮深度探校</strong><p>围绕数学进度、英文写作、EAL、课后活动、费用和家长通勤做定向提问。</p><button class="btn btn-soft" data-go="schools">回到学校库</button></div><div class="action-card"><strong>探校记录模板</strong><p>每次探校固定记录：事实、孩子感受、家长判断、待核验问题、是否进入申请名单。</p><button class="btn btn-soft" data-go="data">由数据入口补充</button></div></div></div></div>
   </section>
 
-  <div id="visitModal" class="visit-modal" role="dialog" aria-modal="true" aria-labelledby="visitModalTitle"><div class="visit-modal-card"><div class="visit-modal-head"><h2 id="visitModalTitle">新建访校日程</h2><button id="closeVisitModal" class="close-btn" type="button" aria-label="关闭">×</button></div><form id="visitForm" class="visit-form"><input id="visitEventId" type="hidden"><div class="field"><label for="visitSchool">学校</label><select id="visitSchool" required></select></div><div class="visit-form two"><div class="field"><label for="visitDate">日期</label><input id="visitDate" type="date" required></div><div class="field"><label for="visitType">访校类型</label><select id="visitType"><option value="open_day">开放日</option><option value="campus_visit">校园参观</option><option value="admission_event">招生说明会</option><option value="interview">面试</option><option value="other">其他</option></select></div></div><div class="visit-form two"><div class="field"><label for="visitStartTime">开始时间</label><input id="visitStartTime" type="time"></div><div class="field"><label for="visitEndTime">结束时间</label><input id="visitEndTime" type="time"></div></div><div class="visit-form two"><div class="field"><label for="visitStatus">状态</label><select id="visitStatus"><option value="planned">待确认</option><option value="booked">已预约</option><option value="done">已完成</option><option value="cancelled">已取消</option></select></div><div class="field"><label for="visitSource">来源</label><select id="visitSource"><option value="family">家庭自建</option><option value="official">学校官方</option></select></div></div><div class="field"><label for="visitAddress">地址</label><input id="visitAddress" placeholder="默认带出学校地址，可修改"></div><div class="field"><label for="visitContact">联系人 / 电话</label><input id="visitContact" placeholder="招生办或联系人"></div><div class="field"><label for="visitBookingUrl">预约链接</label><input id="visitBookingUrl" type="url" placeholder="https://"></div><div class="field"><label for="visitNote">备注</label><textarea id="visitNote" placeholder="想重点了解什么？"></textarea></div><div class="visit-form-actions"><button id="cancelVisitBtn" class="btn" type="button">取消</button><button class="btn btn-primary" type="submit">保存日程</button></div></form></div></div>
+  <div id="visitModal" class="visit-modal" role="dialog" aria-modal="true" aria-labelledby="visitModalTitle"><div class="visit-modal-card"><div class="visit-modal-head"><h2 id="visitModalTitle">新建访校日程</h2><button id="closeVisitModal" class="close-btn" type="button" aria-label="关闭">×</button></div><form id="visitForm" class="visit-form"><input id="visitEventId" type="hidden"><div class="field"><label for="visitSchool">学校</label><select id="visitSchool" required></select></div><div class="visit-form two"><div class="field"><label for="visitDate">日期</label><input id="visitDate" type="date" required></div><div class="field"><label for="visitType">访校类型</label><select id="visitType"><option value="open_day">开放日</option><option value="experience_day">体验日</option><option value="campus_visit">校园参观</option><option value="admission_event">招生说明会</option><option value="interview">面试</option><option value="other">其他</option></select></div></div><div class="visit-form two"><div class="field"><label for="visitStartTime">开始时间</label><input id="visitStartTime" type="time"></div><div class="field"><label for="visitEndTime">结束时间</label><input id="visitEndTime" type="time"></div></div><div class="visit-form two"><div class="field"><label for="visitStatus">状态</label><select id="visitStatus"><option value="planned">待确认</option><option value="booked">已预约</option><option value="done">已完成</option><option value="cancelled">已取消</option></select></div><div class="field"><label for="visitSource">来源</label><select id="visitSource"><option value="family">家庭自建</option><option value="official">学校官方</option></select></div></div><div class="field"><label for="visitAddress">地址</label><input id="visitAddress" placeholder="默认带出学校地址，可修改"></div><div class="field"><label for="visitContact">联系人 / 电话</label><input id="visitContact" placeholder="招生办或联系人"></div><div class="field"><label for="visitBookingUrl">预约链接</label><input id="visitBookingUrl" type="url" placeholder="https://"></div><div class="field"><label for="visitNote">备注</label><textarea id="visitNote" placeholder="想重点了解什么？"></textarea></div><div class="visit-form-actions"><button id="cancelVisitBtn" class="btn" type="button">取消</button><button class="btn btn-primary" type="submit">保存日程</button></div></form></div></div>
 
   <section id="view-map" class="view">
     <div class="page-intro"><h1><span class="emoji">📈</span> MAP 测试</h1><p>先做基线，再决定是否报长期课程；MAP 不是所有学校的统一必考项目。</p></div>
@@ -1529,7 +1529,7 @@ if (Array.isArray(window.MAP_VOCABULARY)) {
 }
 </script>
 <script>
-/* Generated from official-school research checked on 2026-10-15. */
+/* School visit updates: official sources and clearly marked media leads, checked 2026-10-20. */
 window.SCHOOL_VISIT_UPDATES = {
   "this": {
     "status": "2026年10月29日校园开放日，需扫码报名",
@@ -1562,19 +1562,21 @@ window.SCHOOL_VISIT_UPDATES = {
         "date": "2026-10-26",
         "startTime": "16:00",
         "endTime": "17:30",
-        "title": "WAB Middle School Open House",
+        "title": "京西中学开放日 · Open House",
         "audience": "中学申请家庭（含 G6）",
         "detail": "北京京西学校主校区；面向 Grade 6-8 家庭介绍中学课程、学习体验与校园。",
-        "sourceUrl": "https://www.wab-edu.cn/join-us/admissions/wab-openhouse"
+        "sourceUrl": "https://www.wab-edu.cn/join-us/admissions/wab-openhouse",
+        "type": "open_day"
       },
       {
         "date": "2026-11-12",
         "startTime": "13:30",
         "endTime": "16:00",
-        "title": "WAB Middle School Experience Day",
+        "title": "京西中学体验日 · Experience Day",
         "audience": "拟申请Grade 6-8的学生及家长；与2027年G6目标匹配",
         "detail": "北京京西学校主校区；学生参加试课，家长与中学团队交流，家庭参观校园并与学生大使交流。名额有限，参加试课者须提交初始申请表确认资格。",
-        "sourceUrl": "https://www.wab-edu.cn/join-us/admissions/wab-openhouse"
+        "sourceUrl": "https://www.wab-edu.cn/join-us/admissions/wab-openhouse",
+        "type": "experience_day"
       }
     ],
     "bookingUrl": "https://www.wab-edu.cn/join-us/admissions/wab-openhouse",
@@ -1625,10 +1627,11 @@ window.SCHOOL_VISIT_UPDATES = {
         "date": "2026-10-21",
         "startTime": "",
         "endTime": "",
-        "title": "CISB Middle & High School Discovery Day",
+        "title": "CISB 中学及高中体验日 · Discovery Day",
         "audience": "拟申请Middle School或High School的学生及家庭；涵盖Grade 6",
         "detail": "北京加拿大国际学校亮马桥主校区。学生按年级课表跟班体验，家长领导团队会面可安排在08:30-09:00；可选择当天下午参加MAP测评。官网未给出整个活动的完整起止时间。",
-        "sourceUrl": "https://www.cisbeijing.com/269mhdiscover/"
+        "sourceUrl": "https://www.cisbeijing.com/269mhdiscover/",
+        "type": "experience_day"
       }
     ],
     "bookingUrl": "https://www.cisbeijing.com/269mhdiscover/",
@@ -1714,15 +1717,26 @@ window.SCHOOL_VISIT_UPDATES = {
     "verification": "booking_available"
   },
   "biba": {
-    "status": "官网未公布2026年10月15日之后、适用于2027年G6家庭的开放日日期；2027-2028学年入学申请已开放。",
-    "summary": "北京海嘉官网的“入学探校”资料链接目前返回404，校历仍展示2025年12月13日全校开放日，不能作为当前场次。官方OpenApply已明确可选择2027-2028学年和申请年级，可先提交入学申请并向招生部询问G6访校。",
-    "events": [],
-    "bookingUrl": "https://bibachina.openapply.cn/apply",
+    "status": "媒体公布新场次，待学校确认",
+    "summary": "近期媒体列有校园开放日，日期、时段、适用学段及名额请向学校确认；公开活动不代表家庭已预约。",
+    "events": [
+      {
+        "date": "2026-10-25",
+        "startTime": "",
+        "endTime": "",
+        "title": "海嘉校园开放日",
+        "type": "open_day",
+        "verification": "secondary_unconfirmed",
+        "sourceUrl": "https://www.ieduonline.cn/news/113985",
+        "detail": "待学校确认；尚未预约。课堂了解、教师交流和校园参观；具体时段及适用学段待学校确认。"
+      }
+    ],
+    "bookingUrl": "https://www.ieduonline.cn/news/113985",
     "bookingMethod": "在官方OpenApply选择2027-2028学年及Grade 6提交申请；访校日期需由招生部另行确认。",
-    "sourceUrl": "https://bibachina.openapply.cn/apply",
-    "sourceLabel": "海嘉官方OpenApply入学申请表",
-    "checkedAt": "2026-10-15",
-    "verification": "no_current_date"
+    "sourceUrl": "https://www.ieduonline.cn/news/113985",
+    "sourceLabel": "近期教育媒体（待学校确认）",
+    "checkedAt": "2026-10-20",
+    "verification": "secondary_unconfirmed"
   },
   "bibs-shunyi": {
     "status": "顺义天竺校区可预约工作日访校，官网未公开2026年秋季固定开放日日期。",
@@ -1736,15 +1750,26 @@ window.SCHOOL_VISIT_UPDATES = {
     "verification": "booking_available"
   },
   "huijia": {
-    "status": "官网入学申请/预约表可用，但未公布2026年10月15日之后的固定开放日。",
-    "summary": "官网已发布2026-2027入学指南，并提供入学申请表；表单说明预约成功后招生办会在三个工作日内联系地址、停车等访校细节。目标G6对应汇佳MYP中学项目，可在表单中提交意向后确认2027秋季安排。",
-    "events": [],
-    "bookingUrl": "https://www.huijia.edu.cn/rxsqb",
+    "status": "媒体公布新场次，待学校确认",
+    "summary": "近期媒体列有校园开放日，日期、时段、适用学段及名额请向学校确认；公开活动不代表家庭已预约。",
+    "events": [
+      {
+        "date": "2026-10-31",
+        "startTime": "",
+        "endTime": "",
+        "title": "汇佳全学段开放日",
+        "type": "open_day",
+        "verification": "secondary_unconfirmed",
+        "sourceUrl": "https://guoji.114study.com/school/huijia/openday/",
+        "detail": "待学校确认；尚未预约。课程说明、校园参观及答疑。媒体提及上午9:00，但时段未获官方确认，暂不填写固定时间。"
+      }
+    ],
+    "bookingUrl": "https://guoji.114study.com/school/huijia/openday/",
     "bookingMethod": "填写官网入学申请表；预约成功后等待招办三个工作日内联系，也可通过官网招生咨询继续确认2027年G6。",
-    "sourceUrl": "https://www.huijia.edu.cn/rxsqb",
-    "sourceLabel": "汇佳官网：入学申请表",
-    "checkedAt": "2026-10-15",
-    "verification": "booking_available"
+    "sourceUrl": "https://guoji.114study.com/school/huijia/openday/",
+    "sourceLabel": "近期教育媒体（待学校确认）",
+    "checkedAt": "2026-10-20",
+    "verification": "secondary_unconfirmed"
   },
   "daoxianghu": {
     "status": "官网显示“2026学年开放日预约现已开始”，但未列可核验的具体日期和时间。",
@@ -1769,48 +1794,102 @@ window.SCHOOL_VISIT_UPDATES = {
     "verification": "booking_available"
   },
   "kevin-chaoyang": {
-    "status": "朝阳凯文官网提供预约参观页和官方日程表单，公开抓取结果未显示具体日期。",
-    "summary": "已核对为北京市朝阳区凯文学校，不是海淀凯文。官网预约参观页指向官方表单以查看具体日程；2027年G6家庭可通过表单或招生办确认。",
-    "events": [],
-    "bookingUrl": "https://cy.kaiwenacademy.cn/enrollment/make-an-appointment-to-visit",
+    "status": "媒体公布新场次，待学校确认",
+    "summary": "近期媒体列有校园开放日，日期、时段、适用学段及名额请向学校确认；公开活动不代表家庭已预约。",
+    "events": [
+      {
+        "date": "2026-10-25",
+        "startTime": "",
+        "endTime": "",
+        "title": "朝阳凯文校园开放日",
+        "type": "open_day",
+        "verification": "secondary_unconfirmed",
+        "sourceUrl": "https://www.ysxiao.cn/zhongdianxiaoxue/223149.html",
+        "detail": "待学校确认；尚未预约。不同媒体关于是否已公布日期存在差异；日期、时段、适用学段均需招生办确认。"
+      }
+    ],
+    "bookingUrl": "https://www.ysxiao.cn/zhongdianxiaoxue/223149.html",
     "bookingMethod": "从官网预约参观页进入Parllay官方表单查看实时日程，或联系招生办010-83028299、admissions@cy.kaiwenacademy.cn。",
-    "sourceUrl": "https://cy.kaiwenacademy.cn/enrollment/make-an-appointment-to-visit",
-    "sourceLabel": "朝阳凯文官网：预约参观",
-    "checkedAt": "2026-10-15",
-    "verification": "booking_available"
+    "sourceUrl": "https://www.ysxiao.cn/zhongdianxiaoxue/223149.html",
+    "sourceLabel": "近期教育媒体（待学校确认）",
+    "checkedAt": "2026-10-20",
+    "verification": "secondary_unconfirmed"
   },
   "aidi": {
-    "status": "官网支持每日预约参观；首页所列10月开放日为2025年旧场次，不能视为2026年活动。",
-    "summary": "爱迪官网明确周一至周日均可参观，上午9:00-11:00、下午14:00-17:00，需提前1-2天预约。首页最新开放日文章实际发布于2025年9月19日，活动日期为2025年10月18日和25日，已排除。",
-    "events": [],
-    "bookingUrl": "https://www.aidi.edu.cn/?page_id=120",
+    "status": "媒体公布新场次，待学校确认",
+    "summary": "近期媒体列有校园开放日，日期、时段、适用学段及名额请向学校确认；公开活动不代表家庭已预约。",
+    "events": [
+      {
+        "date": "2026-10-24",
+        "startTime": "14:00",
+        "endTime": "17:00",
+        "title": "爱迪校园开放日",
+        "type": "open_day",
+        "verification": "secondary_unconfirmed",
+        "sourceUrl": "https://www.ieduonline.cn/news/114380",
+        "detail": "待学校确认；尚未预约。媒体列为幼儿园至高中；中学活动安排及时间需学校确认。"
+      },
+      {
+        "date": "2026-10-31",
+        "startTime": "14:00",
+        "endTime": "17:00",
+        "title": "爱迪校园开放日",
+        "type": "open_day",
+        "verification": "secondary_unconfirmed",
+        "sourceUrl": "https://www.ieduonline.cn/news/114380",
+        "detail": "待学校确认；尚未预约。媒体列为幼儿园至高中；中学活动安排及时间需学校确认。"
+      }
+    ],
+    "bookingUrl": "https://www.ieduonline.cn/news/114380",
     "bookingMethod": "在官网填写在线预约申请，或提前1-2天致电010-84390808预约每日9:00-11:00或14:00-17:00访校。",
-    "sourceUrl": "https://www.aidi.edu.cn/?page_id=120",
-    "sourceLabel": "北京爱迪官网：招生申请与预约参观",
-    "checkedAt": "2026-10-15",
-    "verification": "booking_available"
+    "sourceUrl": "https://www.ieduonline.cn/news/114380",
+    "sourceLabel": "近期教育媒体（待学校确认）",
+    "checkedAt": "2026-10-20",
+    "verification": "secondary_unconfirmed"
   },
   "daystar": {
-    "status": "官方探校系统可按校区、申请年级和日期预约；公开页面未直接渲染当前可选日期。",
-    "summary": "2027年G6应选择北皋校区（1-12年级）。官方EasyApply探校系统支持选择校区、申请年级、预约日期和时段，但日期由前端动态加载，当前公开抓取无法独立确认具体场次。",
-    "events": [],
-    "bookingUrl": "https://apply.daystaracademy.cn/tour",
+    "status": "媒体公布新场次，待学校确认",
+    "summary": "近期媒体列有校园开放日，日期、时段、适用学段及名额请向学校确认；公开活动不代表家庭已预约。",
+    "events": [
+      {
+        "date": "2026-10-24",
+        "startTime": "",
+        "endTime": "",
+        "title": "启明星校园开放日",
+        "type": "open_day",
+        "verification": "secondary_unconfirmed",
+        "sourceUrl": "https://www.ysxiao.cn/zhongdianxiaoxue/223149.html",
+        "detail": "待学校确认；尚未预约。具体校区、时间及是否面向中学/G6家庭尚未确认。"
+      }
+    ],
+    "bookingUrl": "https://www.ysxiao.cn/zhongdianxiaoxue/223149.html",
     "bookingMethod": "在官方探校系统依次选择北皋校区、申请年级G6及可用日期；也可联系中学部010-84464189转3。",
-    "sourceUrl": "https://apply.daystaracademy.cn/tour",
-    "sourceLabel": "启明星官方EasyApply探校系统",
-    "checkedAt": "2026-10-15",
-    "verification": "booking_available"
+    "sourceUrl": "https://www.ysxiao.cn/zhongdianxiaoxue/223149.html",
+    "sourceLabel": "近期教育媒体（待学校确认）",
+    "checkedAt": "2026-10-20",
+    "verification": "secondary_unconfirmed"
   },
   "new-talent": {
-    "status": "官网开放日报名表仍在线，但表单未向公开抓取展示具体日期。",
-    "summary": "北京市新英才学校官网直接链接官方番茄表单作为“开放日报名”，并提供初中课程招生老师联系方式。2027年G6可从该表单查询实时场次，或联系初中招生老师。",
-    "events": [],
-    "bookingUrl": "https://ding.tomatoform.com/f/dscxnh8g",
+    "status": "媒体公布新场次，待学校确认",
+    "summary": "近期媒体列有校园开放日，日期、时段、适用学段及名额请向学校确认；公开活动不代表家庭已预约。",
+    "events": [
+      {
+        "date": "2026-10-24",
+        "startTime": "",
+        "endTime": "",
+        "title": "新英才校园开放日",
+        "type": "open_day",
+        "verification": "secondary_unconfirmed",
+        "sourceUrl": "https://www.ieduonline.cn/news/114380",
+        "detail": "待学校确认；尚未预约。媒体称本场侧重幼儿园及“0.5项目”，与G6目标相关性较低；时间和学段需学校确认。"
+      }
+    ],
+    "bookingUrl": "https://www.ieduonline.cn/news/114380",
     "bookingMethod": "填写官网链接的番茄表单；也可联系初中课程招生老师陈老师，010-80467117或13810130723。",
-    "sourceUrl": "https://www.bjnewtalent.com/category/office.html",
-    "sourceLabel": "北京市新英才学校官网：联系招生办/开放日报名",
-    "checkedAt": "2026-10-15",
-    "verification": "booking_available"
+    "sourceUrl": "https://www.ieduonline.cn/news/114380",
+    "sourceLabel": "近期教育媒体（待学校确认）",
+    "checkedAt": "2026-10-20",
+    "verification": "secondary_unconfirmed"
   },
   "haidian-foreign": {
     "status": "海淀校区可在接待中心咨询；官网未公布2027年G6专场开放日日期。",
@@ -1835,15 +1914,27 @@ window.SCHOOL_VISIT_UPDATES = {
     "verification": "no_current_date"
   },
   "head-school": {
-    "status": "北京赫德可电话预约家长见面会、招生说明会或校园参观；官网未列2026年秋季具体场次。",
-    "summary": "已核对北京赫德两校区：G6/中学应重点联系金盏校区，而非仅看东坝小学场。官方招生流程明确可预约家长见面会、招生说明会或参观学校，并给出金盏校区电话。官网活动预约页当前仍停留在2024年旧说明会，因此没有写入日期。",
-    "events": [],
-    "bookingUrl": "https://www.hdschools.org/zh_cn/beijing/enroll/flow",
+    "status": "媒体公布新场次，待学校确认",
+    "summary": "近期媒体列有校园开放日，日期、时段、适用学段及名额请向学校确认；公开活动不代表家庭已预约。",
+    "events": [
+      {
+        "date": "2026-10-31",
+        "startTime": "09:30",
+        "endTime": "",
+        "title": "赫德校园开放日",
+        "type": "open_day",
+        "verification": "secondary_unconfirmed",
+        "sourceUrl": "https://guoji.114study.com/school/hdbeijing/news/31222/",
+        "detail": "待学校确认；尚未预约。中学部金盏校区：课程说明、师生分享、新生评估、校园游览及浮游市集；小学部东坝校区同时开放。G6所属学部及校区须先确认。",
+        "address": "中学部：金盏校区；小学部：东坝校区（具体地址请向学校确认）"
+      }
+    ],
+    "bookingUrl": "https://guoji.114study.com/school/hdbeijing/news/31222/",
     "bookingMethod": "致电010-84339889（金盏校区）或400-0098-089预约中学家长见面会/说明会/参观；中学邮箱bjsec.admissions@hdschools.org。",
-    "sourceUrl": "https://www.hdschools.org/zh_cn/beijing/enroll/flow",
-    "sourceLabel": "北京赫德官网：招生流程",
-    "checkedAt": "2026-10-15",
-    "verification": "booking_available"
+    "sourceUrl": "https://guoji.114study.com/school/hdbeijing/news/31222/",
+    "sourceLabel": "近期教育媒体（待学校确认）",
+    "checkedAt": "2026-10-20",
+    "verification": "secondary_unconfirmed"
   },
   "yaohua": {
     "status": "北京亦庄耀华可由招生部安排首次来访和校园参观；官网未公布当前开放日日期。",
@@ -2090,7 +2181,7 @@ schools.forEach(school => {
   if (officialVisitUpdate) school.visitDays = officialVisitUpdate;
 });
 const studentProfile = {"name":"格格","nickname":"格格","currentSchool":"史家小学分校","currentGrade":"2026年9月进入国内小学五年级","targetEntry":"2027年秋季","targetGrade":"G6","targetStage":"G9 美国高中","acceptedCurricula":["美式课程","IB MYP后衔接美式高中或AP"],"english":{},"personality":{},"familyConstraints":{}};
-const APP_VERSION = "0.7.2";
+const APP_VERSION = "0.7.3";
 const defaultSelected = ["this", "wab", "isb"];
 const defaultCommuteSamples = {
   this: [{ schoolId: "this", originLabel: "清华大学附属中学国际部校址附近", destinationLabel: "工作地点", mode: "driving", durationMinutes: 30, distanceMeters: null, sampledAt: "2026-08-07T16:00:00+08:00", provider: "amap", sampleContext: "school_area_to_qinghe", sourceStatus: "provider_result", recordedBy: "web_baseline" }, { schoolId: "this", originLabel: "清华大学附属中学国际部校址附近", destinationLabel: "工作地点", mode: "transit", durationMinutes: 60, distanceMeters: null, sampledAt: "2026-08-07T16:30:00+08:00", provider: "amap", sampleContext: "school_area_to_qinghe", sourceStatus: "provider_result", recordedBy: "web_baseline" }],
@@ -2522,7 +2613,7 @@ function agendaMarkup(events) {
     const official = String(event.id || "").startsWith("official-");
     const sourceLabel = event.source === "official" ? "官方资料 · 家庭记录" : "家庭安排";
     const bookingUrl = event.bookingUrl && /^https?:\/\//i.test(event.bookingUrl) ? event.bookingUrl : "";
-    return `<article class="agenda-item"><time class="agenda-date" datetime="${escapeHtml(event.date)}"><strong>${Number(date[2])}</strong><span>${Number(date[1])} 月 · ${date[0]}</span></time><div class="agenda-copy"><h3>${escapeHtml(school?.nameZh || "家庭访校")}</h3><p>${escapeHtml(event.title || "访校活动")}</p><p>${escapeHtml(formatVisitTime(event))}</p><span class="agenda-source">${official ? "官方公开场次 · 需预约" : sourceLabel + " · " + (visitStatusLabels[event.status] || "待确认")}</span><div class="agenda-links"><button type="button" data-agenda-school="${escapeHtml(event.schoolId)}">学校详情<svg class="ui-icon" aria-hidden="true"><use href="#arrow"></use></svg></button>${bookingUrl ? `<a href="${escapeHtml(bookingUrl)}" target="_blank" rel="noreferrer">${official ? "预约 / 咨询" : "预约入口"}</a>` : ""}</div></div></article>`;
+    return `<article class="agenda-item"><time class="agenda-date" datetime="${escapeHtml(event.date)}"><strong>${Number(date[2])}</strong><span>${Number(date[1])} 月 · ${date[0]}</span></time><div class="agenda-copy"><h3>${escapeHtml(school?.nameZh || "家庭访校")}</h3><p>${escapeHtml(event.title || "访校活动")}</p><p>${escapeHtml(formatVisitTime(event))}</p><span class="agenda-source">${escapeHtml(visitEventDetail(event))}</span><div class="agenda-links"><button type="button" data-agenda-school="${escapeHtml(event.schoolId)}">学校详情<svg class="ui-icon" aria-hidden="true"><use href="#arrow"></use></svg></button>${bookingUrl ? `<a href="${escapeHtml(bookingUrl)}" target="_blank" rel="noreferrer">${official ? "预约 / 咨询" : "预约入口"}</a>` : ""}</div></div></article>`;
   }).join("");
 }
 
@@ -2572,7 +2663,7 @@ function switchSchoolSubview(view) {
   syncWorkspaceNavigation();
 }
 
-const visitTypeLabels = { open_day: "开放日", campus_visit: "校园参观", admission_event: "招生说明会", interview: "面试", other: "其他" };
+const visitTypeLabels = { open_day: "开放日", experience_day: "体验日", campus_visit: "校园参观", admission_event: "招生说明会", interview: "面试", other: "其他" };
 const visitStatusLabels = { planned: "待确认", booked: "已预约", done: "已完成", cancelled: "已取消" };
 let visitCalendarDate = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 let selectedVisitDate = localTodayKey();
@@ -2582,13 +2673,19 @@ function formatVisitTime(event) { const time = [event.startTime, event.endTime].
 function officialVisitEvents() {
   const events = [];
   schools.forEach(school => {
-    (school.visitDays?.events || []).filter(event => /^\d{4}-\d{2}-\d{2}$/.test(event.date)).forEach(event => events.push({ id: `official-${school.id}-${event.date}-${event.title || "visit"}`, schoolId: school.id, date: event.date, startTime: event.startTime || "", endTime: event.endTime || "", type: "open_day", title: event.title || "学校访校活动", status: "planned", source: "official", address: school.address || "", bookingUrl: school.visitDays?.bookingUrl || school.officialUrl || "", note: [event.audience, event.detail].filter(Boolean).join(" · ") || "学校官网公开活动，请以官方页面为准。" }));
+    (school.visitDays?.events || []).filter(event => /^\d{4}-\d{2}-\d{2}$/.test(event.date)).forEach(event => events.push({ id: `official-${school.id}-${event.date}-${event.title || "visit"}`, schoolId: school.id, date: event.date, startTime: event.startTime || "", endTime: event.endTime || "", type: event.type || "open_day", title: event.title || "学校访校活动", status: "planned", source: (event.verification || school.visitDays?.verification) === "secondary_unconfirmed" ? "secondary" : "official", verification: event.verification || school.visitDays?.verification, address: event.address || school.address || "", bookingUrl: event.sourceUrl || school.visitDays?.bookingUrl || school.officialUrl || "", note: [event.audience, event.detail].filter(Boolean).join(" · ") || "学校官网公开活动，请以官方页面为准。" }));
   });
   return events;
 }
-function allVisitEvents() { return [...officialVisitEvents(), ...(workspaceState.visitEvents || [])]; }
+function allVisitEvents() {
+  const published = officialVisitEvents();
+  const family = workspaceState.visitEvents || [];
+  // Reuse the eight research records saved on this device before publication.
+  const imported = event => event.status === "planned" && String(event.note || "").includes("核对日期：2026-10-20") && published.some(item => item.schoolId === event.schoolId && item.date === event.date && item.type === event.type && String(event.note || "").includes(item.bookingUrl));
+  return [...published, ...family.filter(event => !imported(event))];
+}
 function visitSchoolName(event) { return getSchool(event.schoolId)?.nameZh || "未关联学校"; }
-function visitEventDetail(event) { return String(event.id || "").startsWith("official-") ? "官方公开场次 · 待预约" : `${event.source === "official" ? "学校官方" : "家庭自建"} · ${visitStatusLabels[event.status] || "待确认"}`; }
+function visitEventDetail(event) { if (event.source === "secondary") return "媒体线索 · 待学校确认 · 尚未预约"; return String(event.id || "").startsWith("official-") ? "官方公开场次 · 待预约" : `${event.source === "official" ? "学校官方" : "家庭自建"} · ${visitStatusLabels[event.status] || "待确认"}`; }
 function renderVisitCalendar() {
   const label = document.getElementById("visitMonthLabel"); const grid = document.getElementById("visitCalendarGrid"); const dayList = document.getElementById("visitDayList");
   if (!label || !grid || !dayList) return;
@@ -2597,9 +2694,9 @@ function renderVisitCalendar() {
   const firstDay = new Date(year, month, 1); const mondayOffset = (firstDay.getDay() + 6) % 7; const start = new Date(year, month, 1 - mondayOffset);
   grid.innerHTML = Array.from({ length: 42 }, (_, index) => { const date = new Date(start); date.setDate(start.getDate() + index); const key = visitDateKey(date); const inMonth = date.getMonth() === month; const classes = ["visit-day", inMonth ? "" : "other-month", key === localTodayKey() ? "today" : "", key === selectedVisitDate ? "selected" : ""].filter(Boolean).join(" "); const hasPending = events.some(event => event.date === key && event.status === "planned"); return `<button class="${classes}${hasPending ? " pending" : ""}" type="button" data-visit-date="${key}" aria-label="${key}${counts[key] ? `，${counts[key]}项访校安排` : ""}"><span class="visit-day-number">${date.getDate()}</span>${counts[key] ? `<span class="visit-day-count">${counts[key]}</span>` : ""}</button>`; }).join("");
   const dayEvents = events.filter(event => event.date === selectedVisitDate).sort((a, b) => `${a.startTime || "99:99"}${a.title}`.localeCompare(`${b.startTime || "99:99"}${b.title}`));
-  dayList.innerHTML = dayEvents.length ? dayEvents.map(event => { const canManage = event.managed === true || event.source !== "official"; return `<article class="visit-event"><span class="visit-event-dot ${event.source === "family" ? "family" : ""} ${event.status === "planned" ? "pending" : ""}"></span><div class="visit-event-main"><strong>${escapeHtml(visitSchoolName(event))} · ${escapeHtml(event.title || visitTypeLabels[event.type] || "访校活动")}</strong><span>${escapeHtml(formatVisitTime(event))} · ${escapeHtml(visitEventDetail(event))}</span>${event.address ? `<span>${escapeHtml(event.address)}</span>` : ""}${event.note ? `<span>${escapeHtml(event.note)}</span>` : ""}</div><div class="visit-event-actions">${canManage ? `<button class="btn" type="button" data-edit-visit="${escapeHtml(event.id)}">编辑</button><button class="btn" type="button" data-delete-visit="${escapeHtml(event.id)}">删除</button>` : `<button class="btn" type="button" data-open-school="${escapeHtml(event.schoolId)}">学校详情</button>`}</div></article>`; }).join("") : `<div class="visit-day-empty">这一天还没有访校安排。可以点击右上角“新建访校”添加。</div>`;
+  dayList.innerHTML = dayEvents.length ? dayEvents.map(event => { const canManage = event.managed === true || !String(event.id || "").startsWith("official-"); return `<article class="visit-event"><span class="visit-event-dot ${event.source === "family" ? "family" : ""} ${event.status === "planned" ? "pending" : ""}"></span><div class="visit-event-main"><strong>${escapeHtml(visitSchoolName(event))} · ${escapeHtml(event.title || visitTypeLabels[event.type] || "访校活动")}</strong><span>${escapeHtml(formatVisitTime(event))} · ${escapeHtml(visitEventDetail(event))}</span>${event.address ? `<span>${escapeHtml(event.address)}</span>` : ""}${event.note ? `<span>${escapeHtml(event.note)}</span>` : ""}</div><div class="visit-event-actions">${canManage ? `<button class="btn" type="button" data-edit-visit="${escapeHtml(event.id)}">编辑</button><button class="btn" type="button" data-delete-visit="${escapeHtml(event.id)}">删除</button>` : `<button class="btn" type="button" data-open-school="${escapeHtml(event.schoolId)}">学校详情</button>`}</div></article>`; }).join("") : `<div class="visit-day-empty">这一天还没有访校安排。可以点击右上角“新建访校”添加。</div>`;
   document.getElementById("visitSelectedDateLabel").textContent = `${selectedVisitDate.replaceAll("-", ".")} · 当日日程`;
-  document.getElementById("visitUpcomingList").innerHTML = agendaMarkup(WorkspaceDesign.upcomingVisits(allVisitEvents(), localTodayKey(), 6));
+  document.getElementById("visitUpcomingList").innerHTML = agendaMarkup(WorkspaceDesign.upcomingVisits(allVisitEvents(), localTodayKey(), Infinity));
 }
 function populateVisitSchools(selectedId = "") { const select = document.getElementById("visitSchool"); if (!select) return; select.innerHTML = `<option value="">请选择学校</option>${schools.map(school => `<option value="${escapeHtml(school.id)}">${escapeHtml(school.nameZh)}</option>`).join("")}`; if (selectedId) select.value = selectedId; }
 function openVisitModal(event = null) { populateVisitSchools(event?.schoolId || ""); document.getElementById("visitModalTitle").textContent = event ? "编辑访校日程" : "新建访校日程"; document.getElementById("visitEventId").value = event?.id || ""; document.getElementById("visitDate").value = event?.date || selectedVisitDate || localTodayKey(); document.getElementById("visitType").value = event?.type || "open_day"; document.getElementById("visitStartTime").value = event?.startTime || ""; document.getElementById("visitEndTime").value = event?.endTime || ""; document.getElementById("visitStatus").value = event?.status || "planned"; document.getElementById("visitSource").value = event?.source || "family"; document.getElementById("visitAddress").value = event?.address || getSchool(event?.schoolId)?.address || ""; document.getElementById("visitContact").value = event?.contact || ""; document.getElementById("visitBookingUrl").value = event?.bookingUrl || ""; document.getElementById("visitNote").value = event?.note || ""; document.getElementById("visitModal").classList.add("open"); }
