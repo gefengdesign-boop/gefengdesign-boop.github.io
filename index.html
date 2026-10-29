@@ -1903,15 +1903,27 @@ window.SCHOOL_VISIT_UPDATES = {
     "verification": "booking_available"
   },
   "smic": {
-    "status": "官网开放入学申请与招生咨询，未公布当前开放日或常规访校日期。",
-    "summary": "中芯英文部官方招生页要求提交在线申请，之后由招生团队联系安排学术评估和面试。官网仍有旧的“小学部和初中部探校预约中”文章，但发布时间已久，不能作为2026年当前场次。",
-    "events": [],
-    "bookingUrl": "https://et.bjsmicschool.com/apply.html",
-    "bookingMethod": "提交官方英文部申请/咨询表，或联系admissions@bjsmicschool.com、010-67853030转2108；访校需由招生办确认。",
-    "sourceUrl": "https://et.bjsmicschool.com/admissions.html",
-    "sourceLabel": "中芯学校英文部官网：Admissions",
-    "checkedAt": "2026-10-15",
-    "verification": "no_current_date"
+    "status": "2026年11月17日英文部探校，面向2027年春季5-8年级家庭",
+    "summary": "北京市中芯学校英文部开放小型校园参观。家长可听取教育理念、教学特点和招生政策介绍，观摩校会并参观校园。为保证沟通质量，每个家庭尽量由一位家长参加，孩子无需出席；预约后请留意邮件通知。",
+    "events": [
+      {
+        "date": "2026-11-17",
+        "startTime": "11:30",
+        "endTime": "13:30",
+        "title": "2027春季学期英文部探校（5-8年级）",
+        "type": "campus_visit",
+        "audience": "申请2027年春季英文部5-8年级的家庭；每个家庭尽量一位家长出席，孩子无需出席",
+        "detail": "11:15-11:25登记入校；11:30-12:20招生宣讲；12:20-12:50校会观摩；12:50-13:10校园游览；13:10-13:30 Q&A。11:15集合，请从二号门进入；附近为交通严管区域，可停学校十字路口东南角地下收费停车场或旁边假日酒店停车场。",
+        "address": "北京市中芯学校2号楼三层2300-1会议室",
+        "sourceUrl": "https://bjsmicschool.openapply.cn/"
+      }
+    ],
+    "bookingUrl": "https://bjsmicschool.openapply.cn/",
+    "bookingMethod": "通过中芯学校官方OpenApply预约；预约后留意邮件通知，并按邮件要求准时参会。",
+    "sourceUrl": "https://bjsmicschool.openapply.cn/",
+    "sourceLabel": "北京市中芯学校官方OpenApply",
+    "checkedAt": "2026-10-29",
+    "verification": "official_date"
   },
   "head-school": {
     "status": "媒体公布新场次，待学校确认",
@@ -2181,7 +2193,7 @@ schools.forEach(school => {
   if (officialVisitUpdate) school.visitDays = officialVisitUpdate;
 });
 const studentProfile = {"name":"格格","nickname":"格格","currentSchool":"史家小学分校","currentGrade":"2026年9月进入国内小学五年级","targetEntry":"2027年秋季","targetGrade":"G6","targetStage":"G9 美国高中","acceptedCurricula":["美式课程","IB MYP后衔接美式高中或AP"],"english":{},"personality":{},"familyConstraints":{}};
-const APP_VERSION = "0.7.3";
+const APP_VERSION = "0.7.4";
 const defaultSelected = ["this", "wab", "isb"];
 const defaultCommuteSamples = {
   this: [{ schoolId: "this", originLabel: "清华大学附属中学国际部校址附近", destinationLabel: "工作地点", mode: "driving", durationMinutes: 30, distanceMeters: null, sampledAt: "2026-08-07T16:00:00+08:00", provider: "amap", sampleContext: "school_area_to_qinghe", sourceStatus: "provider_result", recordedBy: "web_baseline" }, { schoolId: "this", originLabel: "清华大学附属中学国际部校址附近", destinationLabel: "工作地点", mode: "transit", durationMinutes: 60, distanceMeters: null, sampledAt: "2026-08-07T16:30:00+08:00", provider: "amap", sampleContext: "school_area_to_qinghe", sourceStatus: "provider_result", recordedBy: "web_baseline" }],
